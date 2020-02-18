@@ -16,7 +16,7 @@
 </head>
 <body>
     <footer class="page-footer navbar-fixed-bottom bg-success">
-        <div class="footer-copyright text-center">© 2020 Copyright: StudentTable</div>
+        <div class="footer-copyright text-center">© 2020 Copyright: TextbookReview</div>
     </footer>
 </body>
 </html>
