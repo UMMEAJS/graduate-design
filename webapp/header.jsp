@@ -23,7 +23,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" onclick="window.location.href='index.jsp'">学生信息系统</a>
+                <a class="navbar-brand" onclick="window.location.href='index.jsp'">用户信息系统</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav">
