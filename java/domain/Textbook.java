@@ -6,7 +6,7 @@ public class Textbook {
     private String genre;
     private int star;
 
-    public String getISBN() {
+    public String getIsbn() {
         return this.isbn;
     }
 
@@ -22,7 +22,7 @@ public class Textbook {
         return this.star;
     }
 
-    public void setISBN(String isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 

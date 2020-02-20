@@ -16,7 +16,7 @@
     <script type="text/javascript" src="<%= request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <%@ include file="header.jsp"%>
+    <%@ include file="header.jsp" %>
     <div>
         <h1 style="color:grey" align="center">添加学生信息</h1>
     </div>
@@ -53,6 +53,6 @@
             </div>
         </form>
     </div>
-    <%@ include file="footer.jsp"%>
+    <%@ include file="footer.jsp" %>
 </body>
 </html>

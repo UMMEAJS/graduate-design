@@ -17,7 +17,7 @@ public class ReviewDao {
     public void add(Review review) {
         try {
             String sql = "insert into review(rid,uid,isbn,date,review,star) values(?,?,?,?,?,?)";
-            Object[] params = {review.getRID(), review.getUID(), review.getISBN(), review.getDate(), review.getReview(), review.getStar()};
+            Object[] params = {review.getRid(), review.getUid(), review.getIsbn(), review.getDate(), review.getReview(), review.getStar()};
             runner.update(sql, params);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -36,7 +36,7 @@ public class ReviewDao {
     public void edit(Review review) {
         try {
             String sql = "update review set date=?,review=?,star=? where rid=?";
-            Object[] params = {review.getDate(), review.getReview(), review.getStar(), review.getRID()};
+            Object[] params = {review.getDate(), review.getReview(), review.getStar(), review.getRid()};
             runner.update(sql, params);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -61,7 +61,7 @@ public class ReviewDao {
             StringBuilder whereSql = new StringBuilder(" where 1=1 ");
             List<Object> params = new ArrayList<>();
 
-            String isbn = review.getISBN();
+            String isbn = review.getIsbn();
             if (isbn != null && !isbn.trim().isEmpty()) {
                 whereSql.append(" and isbn=? ");
                 params.add(isbn);

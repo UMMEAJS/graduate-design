@@ -16,14 +16,14 @@
     <script type="text/javascript" src="<%= request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <%@ include file="header.jsp"%>
+    <%@ include file="header.jsp" %>
     <div>
         <h1 style="color:grey" align="center">编辑学生信息</h1>
     </div>
     <div class="container-fluid">
         <form class="form-horizontal" role="form" action="<c:url value='/user'/>" method="post">
         <input type="hidden" name="method" value="edit">
-        <input type="hidden" name="id" value="${requestScope.user.getID()}">
+        <input type="hidden" name="id" value="${requestScope.user.id}">
 
         <div class="form-group">
             <label class="col-sm-2 control-label">名字</label>
@@ -54,6 +54,6 @@
         </div>
     </form>
     </div>
-    <%@ include file="footer.jsp"%>
+    <%@ include file="footer.jsp" %>
 </body>
 </html>

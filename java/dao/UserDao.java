@@ -17,7 +17,7 @@ public class UserDao {
     public void add(User user) {
         try {
             String sql = "insert into user(id,name,password,email) values(?,?,?,?)";
-            Object[] params = {user.getID(), user.getName(), user.getPassword(), user.getEmail()};
+            Object[] params = {user.getId(), user.getName(), user.getPassword(), user.getEmail()};
             runner.update(sql, params);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -36,7 +36,7 @@ public class UserDao {
     public void edit(User user) {
         try {
             String sql = "update user set name=?,password=?,email=? where id=?";
-            Object[] params = {user.getName(), user.getPassword(), user.getEmail(), user.getID()};
+            Object[] params = {user.getName(), user.getPassword(), user.getEmail(), user.getId()};
             runner.update(sql, params);
         } catch (Exception e) {
             throw new RuntimeException(e);

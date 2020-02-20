@@ -10,15 +10,15 @@ public class Review {
     private String review;
     private int star;
 
-    public String getRID() {
+    public String getRid() {
         return this.rid;
     }
 
-    public String getUID() {
+    public String getUid() {
         return this.uid;
     }
 
-    public String getISBN() {
+    public String getIsbn() {
         return this.isbn;
     }
 
@@ -34,15 +34,15 @@ public class Review {
         return this.star;
     }
 
-    public void setRID(String rid) {
+    public void setRid(String rid) {
         this.rid = rid;
     }
 
-    public void setUID(String uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 
-    public void setISBN(String isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 

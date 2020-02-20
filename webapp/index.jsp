@@ -17,10 +17,10 @@
     <script type="text/javascript" src="<%= request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <%@ include file="header.jsp"%>
+    <%@ include file="header.jsp" %>
     <div class="container-fluid">
         <h1 style="color:grey" align="center">欢迎来到用户信息中心</h1>
     </div>
-    <%@ include file="footer.jsp"%>
+    <%@ include file="footer.jsp" %>
 </body>
 </html>
