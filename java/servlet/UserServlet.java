@@ -20,28 +20,28 @@ public class UserServlet extends BaseServlet {
         user.setId(CommonUtils.getUUID());
         userService.add(user);
         request.setAttribute("msg", "添加用户成功！");
-        return "/msg.jsp";
+        return "/jsp/user/msg.jsp";
     }
 
     public String delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         userService.delete(id);
         request.setAttribute("msg", "删除用户成功！");
-        return "/msg.jsp";
+        return "/jsp/user/msg.jsp";
     }
 
     public String preEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         User user = userService.find(id);
         request.setAttribute("user", user);
-        return "/edit.jsp";
+        return "/jsp/user/edit.jsp";
     }
 
     public String edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = CommonUtils.toBean(request.getParameterMap(), User.class);
         userService.edit(user);
         request.setAttribute("msg", "用户信息修改成功！");
-        return "/msg.jsp";
+        return "/jsp/user/msg.jsp";
     }
 
     public int getCurrPage(HttpServletRequest request) throws ServletException, IOException {
@@ -74,7 +74,7 @@ public class UserServlet extends BaseServlet {
         page.setUrl(getUrl(request));
         request.setAttribute("page", page);
 
-        return "/list.jsp";
+        return "/jsp/user/list.jsp";
     }
 
     public String login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -86,6 +86,6 @@ public class UserServlet extends BaseServlet {
             request.setAttribute("msg", "登录失败！");
         }
 
-        return "/msg.jsp";
+        return "/jsp/user/msg.jsp";
     }
 }

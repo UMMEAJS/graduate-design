@@ -30,7 +30,7 @@
                     <li><a data-toggle="tab" onclick="window.location.href='index.jsp'">主页</a></li>
                     <li><a data-toggle="tab" onclick="window.location.href='add.jsp'">添加信息</a></li>
                     <li><a data-toggle="tab" onclick="window.location.href='query.jsp'">搜索信息</a></li>
-                    <li><a data-toggle="tab" onclick="window.location.href='user?method=query&currPage=1'">查看信息</a></li>
+                    <li><a data-toggle="tab" onclick="window.location.href='/TextbookReview/user?method=query&currPage=1'">查看信息</a></li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">First</a></li>
