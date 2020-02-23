@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>添加用户信息</title>
+    <title>添加图书信息</title>
     <link rel="stylesheet" href="<%= request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
     <script type="text/javascript" src="<%= request.getContextPath()%>/jQuery/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="<%= request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
@@ -18,11 +18,19 @@
 <body>
     <%@ include file="header.jsp" %>
     <div>
-        <h1 style="color:grey" align="center">添加学生信息</h1>
+        <h1 style="color:grey" align="center">添加图书信息</h1>
     </div>
     <div class="container-fluid">
-        <form class="form-horizontal" role="form" action="<c:url value='/user'/>" method="post">
+        <form class="form-horizontal" role="form" action="<c:url value='/textbook'/>" method="post">
             <input type="hidden" name="method" value="add">
+            <input type="hidden" name="star" value="0">
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">ISBN</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="isbn" placeholder="请输入ISBN">
+                </div>
+            </div>
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">名字</label>
@@ -32,16 +40,9 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label">密码</label>
+                <label class="col-sm-2 control-label">类型</label>
                 <div class="col-sm-10">
-                    <input for="password" type="password" class="form-control" name="password" placeholder="请输入密码">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-2 control-label">邮箱</label>
-                <div class="col-sm-10">
-                    <input for="email" type="email" class="form-control" name="email" placeholder="请输入邮箱">
+                    <input type="text" class="form-control" name="genre" placeholder="请输入类型">
                 </div>
             </div>
 

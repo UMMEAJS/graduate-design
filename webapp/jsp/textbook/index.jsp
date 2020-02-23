@@ -19,7 +19,7 @@
 <body>
     <%@ include file="header.jsp" %>
     <div class="container-fluid">
-        <h1 style="color:grey" align="center">欢迎来到用户信息中心</h1>
+        <h1 style="color:grey" align="center">欢迎来到图书信息中心</h1>
     </div>
     <%@ include file="footer.jsp" %>
 </body>

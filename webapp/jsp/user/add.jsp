@@ -34,14 +34,14 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">密码</label>
                 <div class="col-sm-10">
-                    <input for="password" type="password" class="form-control" name="password" placeholder="请输入密码">
+                    <input type="password" class="form-control" name="password" placeholder="请输入密码">
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">邮箱</label>
                 <div class="col-sm-10">
-                    <input for="email" type="email" class="form-control" name="email" placeholder="请输入邮箱">
+                    <input type="email" class="form-control" name="email" placeholder="请输入邮箱">
                 </div>
             </div>
 

@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>用户信息中心</title>
+    <title>评论信息中心</title>
     <link rel="stylesheet" href="<%= request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
     <script type="text/javascript" src="<%= request.getContextPath()%>/jQuery/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="<%= request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
@@ -18,30 +18,34 @@
 <body>
     <%@ include file="header.jsp" %>
     <div>
-        <h1 style="color:grey" align="center">查看学生信息</h1>
+        <h1 style="color:grey" align="center">查看评论信息</h1>
     </div>
     <div class="container-fluid">
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th style='vertical-align: middle;text-align: center'>ID</th>
-                    <th style='vertical-align: middle;text-align: center'>名字</th>
-                    <th style='vertical-align: middle;text-align: center'>密码</th>
-                    <th style='vertical-align: middle;text-align: center'>邮箱</th>
+                    <th style='vertical-align: middle;text-align: center'>RID</th>
+                    <th style='vertical-align: middle;text-align: center'>UID</th>
+                    <th style='vertical-align: middle;text-align: center'>ISBN</th>
+                    <th style='vertical-align: middle;text-align: center'>日期</th>
+                    <th style='vertical-align: middle;text-align: center'>评论</th>
+                    <th style='vertical-align: middle;text-align: center'>评分</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${requestScope.page.beanList}" var="usr">
+                <c:forEach items="${requestScope.page.beanList}" var="review">
                     <tr>
-                        <td style='vertical-align: middle;text-align: center'>${usr.id}</td>
-                        <td style='vertical-align: middle;text-align: center'>${usr.name}</td>
-                        <td style='vertical-align: middle;text-align: center'>${usr.password}</td>
-                        <td style='vertical-align: middle;text-align: center'>${usr.email}</td>
+                        <td style='vertical-align: middle;text-align: center'>${review.rid}</td>
+                        <td style='vertical-align: middle;text-align: center'>${review.uid}</td>
+                        <td style='vertical-align: middle;text-align: center'>${review.isbn}</td>
+                        <td style='vertical-align: middle;text-align: center'>${review.date}</td>
+                        <td style='vertical-align: middle;text-align: center'>${review.review}</td>
+                        <td style='vertical-align: middle;text-align: center'>${review.star}</td>
                         <td style='vertical-align: middle;text-align: center'>
-                            <a href="<c:url value='/user?method=preEdit&id=${usr.id}'/>">
+                            <a href="<c:url value='/review?method=preEdit&id=${review.rid}'/>">
                                 <span class="glyphicon glyphicon-edit text-info"></span>
                             </a>
-                            <a href="<c:url value='/user?method=delete&id=${usr.id}'/>">
+                            <a href="<c:url value='/review?method=delete&id=${review.rid}'/>">
                                 <span class="glyphicon glyphicon-remove text-warning"></span>
                             </a>
                         </td>

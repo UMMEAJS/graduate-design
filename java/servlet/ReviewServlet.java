@@ -1,12 +1,8 @@
 package servlet;
 
 import domain.Review;
-import domain.Textbook;
 import service.ReviewService;
-import service.TextbookService;
-import domain.User;
 import domain.Page;
-import service.UserService;
 import utils.CommonUtils;
 
 import javax.servlet.ServletException;
@@ -21,30 +17,32 @@ public class ReviewServlet extends BaseServlet {
 
     public String add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Review review = CommonUtils.toBean(request.getParameterMap(), Review.class);
+        review.setRid(CommonUtils.getUUID());
+        review.setDate(CommonUtils.getDate());
         reviewService.add(review);
         request.setAttribute("msg", "添加评论成功！");
-        return "/msg.jsp";
+        return "/jsp/review/msg.jsp";
     }
 
     public String delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String rid = request.getParameter("rid");
         reviewService.delete(rid);
         request.setAttribute("msg", "删除评论成功！");
-        return "/msg.jsp";
+        return "/jsp/review/msg.jsp";
     }
 
     public String preEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String rid = request.getParameter("rid");
         Review review = reviewService.find(rid);
         request.setAttribute("review", review);
-        return "/edit.jsp";
+        return "/jsp/review/edit.jsp";
     }
 
     public String edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Review review = CommonUtils.toBean(request.getParameterMap(), Review.class);
         reviewService.edit(review);
         request.setAttribute("msg", "评论信息修改成功！");
-        return "/msg.jsp";
+        return "/jsp/review/msg.jsp";
     }
 
     public int getCurrPage(HttpServletRequest request) throws ServletException, IOException {
@@ -77,6 +75,6 @@ public class ReviewServlet extends BaseServlet {
         page.setUrl(getUrl(request));
         request.setAttribute("page", page);
 
-        return "/list.jsp";
+        return "/jsp/review/list.jsp";
     }
 }

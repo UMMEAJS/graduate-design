@@ -72,7 +72,7 @@ public class TextbookDao {
             page.setTotalPage((int)Math.ceil((double)totalRecord / pageRecord));
 
             StringBuilder recordSql = new StringBuilder("select * from textbook");
-            String limitSql = " order by id limit ?,?";
+            String limitSql = " order by isbn limit ?,?";
             params.add((currPage - 1) * pageRecord);
             params.add(pageRecord);
             List<Textbook> textbooks = runner.query(recordSql.append(whereSql).append(limitSql).toString(), new BeanListHandler<>(Textbook.class), params.toArray());

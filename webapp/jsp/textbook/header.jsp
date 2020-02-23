@@ -23,14 +23,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" onclick="window.location.href='index.jsp'">用户信息系统</a>
+                <a class="navbar-brand" onclick="window.location.href='/TextbookReview/jsp/textbook/index.jsp'">图书信息系统</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav">
-                    <li><a data-toggle="tab" onclick="window.location.href='index.jsp'">主页</a></li>
-                    <li><a data-toggle="tab" onclick="window.location.href='add.jsp'">添加信息</a></li>
-                    <li><a data-toggle="tab" onclick="window.location.href='query.jsp'">搜索信息</a></li>
-                    <li><a data-toggle="tab" onclick="window.location.href='/TextbookReview/user?method=query&currPage=1'">查看信息</a></li>
+                    <li><a data-toggle="tab" onclick="window.location.href='/TextbookReview/jsp/textbook/index.jsp'">主页</a></li>
+                    <li><a data-toggle="tab" onclick="window.location.href='/TextbookReview/jsp/textbook/add.jsp'">添加信息</a></li>
+                    <li><a data-toggle="tab" onclick="window.location.href='/TextbookReview/jsp/textbook/query.jsp'">搜索信息</a></li>
+                    <li><a data-toggle="tab" onclick="window.location.href='/TextbookReview/textbook?method=query&currPage=1'">查看信息</a></li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">First</a></li>

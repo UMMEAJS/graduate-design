@@ -35,20 +35,20 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">密码</label>
             <div class="col-sm-10">
-                <input for="password" type="password" class="form-control" name="password" value="${requestScope.user.password}">
+                <input type="password" class="form-control" name="password" value="${requestScope.user.password}">
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-sm-2 control-label">邮箱</label>
             <div class="col-sm-10">
-                <input for="email" type="email" class="form-control" name="email" value="${requestScope.user.email}">
+                <input type="email" class="form-control" name="email" value="${requestScope.user.email}">
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">编辑信息</button>
+                <button type="submit" class="btn btn-default">编辑</button>
                 <button type="reset" class="btn btn-reset">重置</button>
             </div>
         </div>

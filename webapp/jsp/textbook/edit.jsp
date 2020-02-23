@@ -10,50 +10,50 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>编辑用户信息</title>
+    <title>编辑图书信息</title>
     <link rel="stylesheet" href="<%= request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
     <script type="text/javascript" src="<%= request.getContextPath()%>/jQuery/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="<%= request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <%@ include file="header.jsp" %>
-    <div>
-        <h1 style="color:grey" align="center">编辑学生信息</h1>
-    </div>
-    <div class="container-fluid">
-        <form class="form-horizontal" role="form" action="<c:url value='/user'/>" method="post">
+<%@ include file="header.jsp" %>
+<div>
+    <h1 style="color:grey" align="center">编辑图书信息</h1>
+</div>
+<div class="container-fluid">
+    <form class="form-horizontal" role="form" action="<c:url value='/textbook'/>" method="post">
         <input type="hidden" name="method" value="edit">
-        <input type="hidden" name="id" value="${requestScope.user.id}">
+        <input type="hidden" name="isbn" value="${requestScope.textbook.isbn}">
 
         <div class="form-group">
             <label class="col-sm-2 control-label">名字</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="name" value="${requestScope.user.name}">
+                <input type="text" class="form-control" name="name" value="${requestScope.textbook.name}">
             </div>
         </div>
 
         <div class="form-group">
-            <label class="col-sm-2 control-label">密码</label>
+            <label class="col-sm-2 control-label">类型</label>
             <div class="col-sm-10">
-                <input for="password" type="password" class="form-control" name="password" value="${requestScope.user.password}">
+                <input type="text" class="form-control" name="genre" value="${requestScope.textbook.genre}">
             </div>
         </div>
 
         <div class="form-group">
-            <label class="col-sm-2 control-label">邮箱</label>
+            <label class="col-sm-2 control-label">评分</label>
             <div class="col-sm-10">
-                <input for="email" type="email" class="form-control" name="email" value="${requestScope.user.email}">
+                <input type="number" class="form-control" name="star" value="${requestScope.textbook.star}">
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">编辑信息</button>
+                <button type="submit" class="btn btn-default">编辑</button>
                 <button type="reset" class="btn btn-reset">重置</button>
             </div>
         </div>
     </form>
-    </div>
-    <%@ include file="footer.jsp" %>
+</div>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

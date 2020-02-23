@@ -23,14 +23,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" onclick="window.location.href='index.jsp'">用户信息系统</a>
+                <a class="navbar-brand" onclick="window.location.href='/TextbookReview/jsp/review/index.jsp'">评论信息系统</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav">
-                    <li><a data-toggle="tab" onclick="window.location.href='index.jsp'">主页</a></li>
-                    <li><a data-toggle="tab" onclick="window.location.href='add.jsp'">添加信息</a></li>
-                    <li><a data-toggle="tab" onclick="window.location.href='query.jsp'">搜索信息</a></li>
-                    <li><a data-toggle="tab" onclick="window.location.href='/TextbookReview/user?method=query&currPage=1'">查看信息</a></li>
+                    <li><a data-toggle="tab" onclick="window.location.href='/TextbookReview/jsp/review/index.jsp'">主页</a></li>
+                    <li><a data-toggle="tab" onclick="window.location.href='/TextbookReview/jsp/review/add.jsp'">添加信息</a></li>
+                    <li><a data-toggle="tab" onclick="window.location.href='/TextbookReview/jsp/review/query.jsp'">搜索信息</a></li>
+                    <li><a data-toggle="tab" onclick="window.location.href='/TextbookReview/review?method=query&currPage=1'">查看信息</a></li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">First</a></li>
@@ -40,7 +40,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a onclick="window.location.href='login.jsp'"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
+                    <li><a onclick="window.location.href='/TextbookReview/jsp/user/login.jsp'"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
                 </ul>
