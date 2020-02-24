@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -42,10 +43,10 @@
                         <td style='vertical-align: middle;text-align: center'>${review.review}</td>
                         <td style='vertical-align: middle;text-align: center'>${review.star}</td>
                         <td style='vertical-align: middle;text-align: center'>
-                            <a href="<c:url value='/review?method=preEdit&id=${review.rid}'/>">
+                            <a href="<c:url value='/review?method=preEdit&rid=${review.rid}'/>">
                                 <span class="glyphicon glyphicon-edit text-info"></span>
                             </a>
-                            <a href="<c:url value='/review?method=delete&id=${review.rid}'/>">
+                            <a href="<c:url value='/review?method=delete&rid=${review.rid}'/>">
                                 <span class="glyphicon glyphicon-remove text-warning"></span>
                             </a>
                         </td>

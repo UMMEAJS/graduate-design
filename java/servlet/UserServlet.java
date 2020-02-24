@@ -7,9 +7,11 @@ import utils.CommonUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLEncoder;
 
 @WebServlet("/user")
 public class UserServlet extends BaseServlet {
@@ -81,10 +83,28 @@ public class UserServlet extends BaseServlet {
         User user = CommonUtils.toBean(request.getParameterMap(), User.class);
         boolean isExist = userService.isExist(user);
         if (isExist) {
+            Cookie cookie = new Cookie("user", URLEncoder.encode(user.getName(), "UTF-8"));
+            cookie.setMaxAge(-1);
+            cookie.setPath("/");
+            response.addCookie(cookie);
             request.setAttribute("msg", "登录成功！");
         } else {
             request.setAttribute("msg", "登录失败！");
         }
+
+        return "/jsp/user/msg.jsp";
+    }
+
+    public String logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("user")) {
+                cookie.setMaxAge(0);
+                cookie.setPath("/");
+                response.addCookie(cookie);
+            }
+        }
+        request.setAttribute("msg", "注销成功！");
 
         return "/jsp/user/msg.jsp";
     }

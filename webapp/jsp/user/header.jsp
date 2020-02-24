@@ -6,6 +6,20 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+    request.setAttribute("isLogin", "0");
+
+    Cookie[] cookies = request.getCookies();
+    for (Cookie cookie : cookies) {
+        if (cookie.getName().equals("user")) {
+            request.setAttribute("isLogin", "1");
+            break;
+        }
+    }
+%>
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -40,8 +54,23 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a onclick="window.location.href='/TextbookReview/jsp/user/login.jsp'"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+                    <c:choose>
+                        <c:when test="${requestScope.isLogin==0}">
+                            <li>
+                                <a onclick="window.location.href='/TextbookReview/jsp/user/login.jsp'">
+                                    <span class="glyphicon glyphicon-log-in"></span> Log in
+                                </a>
+                            </li>
+                        </c:when>
+
+                        <c:otherwise>
+                            <li>
+                                <a onclick="window.location.href='/TextbookReview/user?method=logout'">
+                                    <span class="glyphicon glyphicon-log-out"></span> Log out
+                                </a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
                 </ul>
             </div>

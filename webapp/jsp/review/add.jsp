@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -48,7 +49,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">评分</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="email" placeholder="请输入评分">
+                    <input type="number" class="form-control" name="star" placeholder="请输入评分">
                 </div>
             </div>
 

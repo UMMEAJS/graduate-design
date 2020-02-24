@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -21,13 +22,13 @@
         <h1 style="color:grey" align="center">搜索学生信息</h1>
     </div>
     <div class="container-fluid">
-        <form class="form-horizontal" role="form" action="<c:url value='/user'/>" method="get">
+        <form class="form-horizontal" role="form" action="<c:url value='/review'/>" method="get">
         <input type="hidden" name="method" value="query">
 
         <div class="form-group">
-            <label class="col-sm-2 control-label">名字</label>
+            <label class="col-sm-2 control-label">ISBN</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="name" placeholder="请输入名字">
+                <input type="text" class="form-control" name="isbn" placeholder="请输入ISBN">
             </div>
         </div>
 

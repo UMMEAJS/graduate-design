@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -23,7 +24,7 @@
 <div class="container-fluid">
     <form class="form-horizontal" role="form" action="<c:url value='/review'/>" method="post">
         <input type="hidden" name="method" value="edit">
-        <input type="hidden" name="isbn" value="${requestScope.review.rid}">
+        <input type="hidden" name="rid" value="${requestScope.review.rid}">
 
         <div class="form-group">
             <label class="col-sm-2 control-label">评论</label>

@@ -40,6 +40,7 @@ public class ReviewServlet extends BaseServlet {
 
     public String edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Review review = CommonUtils.toBean(request.getParameterMap(), Review.class);
+        review.setDate(CommonUtils.getDate());
         reviewService.edit(review);
         request.setAttribute("msg", "评论信息修改成功！");
         return "/jsp/review/msg.jsp";
