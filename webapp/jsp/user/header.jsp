@@ -37,14 +37,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" onclick="window.location.href='/TextbookReview/jsp/user/index.jsp'">用户信息系统</a>
+                <a class="navbar-brand" href="/TextbookReview/jsp/user/index.jsp">用户信息系统</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav">
-                    <li><a data-toggle="tab" onclick="window.location.href='/TextbookReview/jsp/user/index.jsp'">主页</a></li>
-                    <li><a data-toggle="tab" onclick="window.location.href='/TextbookReview/jsp/user/add.jsp'">添加信息</a></li>
-                    <li><a data-toggle="tab" onclick="window.location.href='/TextbookReview/jsp/user/query.jsp'">搜索信息</a></li>
-                    <li><a data-toggle="tab" onclick="window.location.href='/TextbookReview/user?method=query&currPage=1'">查看信息</a></li>
+                    <li class="">
+                        <a href="/TextbookReview/jsp/user/index.jsp">主页</a>
+                    </li>
+                    <li class="">
+                        <a href="/TextbookReview/jsp/user/add.jsp">添加信息</a>
+                    </li>
+                    <li class="">
+                        <a href="/TextbookReview/jsp/user/query.jsp">搜索信息</a>
+                    </li>
+                    <li class="">
+                        <a href="/TextbookReview/user?method=query&currPage=1">查看信息</a>
+                    </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">First</a></li>
@@ -76,5 +84,25 @@
             </div>
         </div>
     </nav>
+
+    <script type="text/javascript">
+        $(function () {
+            $('.navbar-nav li').find('a').each(function () {
+                if (this.href === document.location.href || document.location.href.search(this.href) >= 0) {
+                    $(this).parent().siblings('li').removeClass('active');
+                    $(this).parent().addClass('active');
+                }
+            });
+        });
+
+        $(function () {
+            $(".dropdown").mouseover(function () {
+                $(this).addClass("open");
+            });
+            $(".dropdown").mouseleave(function(){
+                $(this).removeClass("open");
+            })
+        })
+    </script>
 </body>
 </html>
