@@ -83,11 +83,13 @@ public class UserServlet extends BaseServlet {
         User user = CommonUtils.toBean(request.getParameterMap(), User.class);
         boolean isExist = userService.isExist(user);
         if (isExist) {
-            Cookie cookie = new Cookie("user", URLEncoder.encode(user.getName(), "UTF-8"));
+            Cookie cookie = new Cookie("user", user.getName());
             cookie.setMaxAge(-1);
             cookie.setPath("/");
             response.addCookie(cookie);
             request.setAttribute("msg", "登录成功！");
+            request.setAttribute("isLogin", 1);
+            request.setAttribute("loginUser", user.getName());
         } else {
             request.setAttribute("msg", "登录失败！");
         }
@@ -105,6 +107,7 @@ public class UserServlet extends BaseServlet {
             }
         }
         request.setAttribute("msg", "注销成功！");
+        request.setAttribute("isLogin", 0);
 
         return "/jsp/user/msg.jsp";
     }

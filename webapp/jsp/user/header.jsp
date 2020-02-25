@@ -9,13 +9,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-    request.setAttribute("isLogin", "0");
-
-    Cookie[] cookies = request.getCookies();
-    for (Cookie cookie : cookies) {
-        if (cookie.getName().equals("user")) {
-            request.setAttribute("isLogin", "1");
-            break;
+    if (request.getAttribute("isLogin") == null) {
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("user")) {
+                request.setAttribute("isLogin", 1);
+                request.setAttribute("loginUser", cookie.getValue());
+                break;
+            }
         }
     }
 %>
@@ -53,33 +54,29 @@
                     <li class="">
                         <a href="/TextbookReview/user?method=query&currPage=1">查看信息</a>
                     </li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">First</a></li>
-                            <li><a href="#">Second</a></li>
-                            <li><a href="#">Third</a></li>
-                        </ul>
-                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <c:if test="${requestScope.isLogin eq 1}">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${requestScope.loginUser}</a></li>
+                    </c:if>
+
                     <c:choose>
-                        <c:when test="${requestScope.isLogin==0}">
+                        <c:when test="${requestScope.isLogin eq 1}">
                             <li>
-                                <a onclick="window.location.href='/TextbookReview/jsp/user/login.jsp'">
-                                    <span class="glyphicon glyphicon-log-in"></span> Log in
+                                <a href="/TextbookReview/user?method=logout">
+                                    <span class="glyphicon glyphicon-log-out"></span> Log out
                                 </a>
                             </li>
                         </c:when>
 
                         <c:otherwise>
                             <li>
-                                <a onclick="window.location.href='/TextbookReview/user?method=logout'">
-                                    <span class="glyphicon glyphicon-log-out"></span> Log out
+                                <a href="/TextbookReview/jsp/user/login.jsp">
+                                    <span class="glyphicon glyphicon-log-in"></span> Log in
                                 </a>
                             </li>
                         </c:otherwise>
                     </c:choose>
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
                 </ul>
             </div>
         </div>
@@ -96,10 +93,11 @@
         });
 
         $(function () {
-            $(".dropdown").mouseover(function () {
+            const dropdown = $(".dropdown");
+            dropdown.mouseover(function () {
                 $(this).addClass("open");
             });
-            $(".dropdown").mouseleave(function(){
+            dropdown.mouseleave(function(){
                 $(this).removeClass("open");
             })
         })

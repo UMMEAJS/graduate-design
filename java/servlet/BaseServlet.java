@@ -30,7 +30,7 @@ public class BaseServlet extends HttpServlet {
                     request.getRequestDispatcher(result).forward(request, response);
                 } else {
                     String prefix = result.substring(0, index);
-                    String path = result.substring(index);
+                    String path = result.substring(index + 1);
                     if (prefix.equals("f")) {
                         request.getRequestDispatcher(path).forward(request, response);
                     } else if (prefix.equals("r")) {
