@@ -91,12 +91,17 @@ public class UserDao {
             List<Object> params = new ArrayList<>();
 
             String email = user.getEmail();
+            String password = user.getPassword();
+
+            if (email == null || password == null) {
+                return false;
+            }
+
             if (email != null && !email.trim().isEmpty()) {
                 whereSql.append(" and email=? ");
                 params.add(email);
             }
 
-            String password = user.getPassword();
             if (password != null && !password.trim().isEmpty()) {
                 whereSql.append(" and password=? ");
                 params.add(password);

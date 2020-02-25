@@ -1,5 +1,6 @@
 package servlet;
 
+import domain.Admin;
 import service.UserService;
 import domain.User;
 import domain.Page;
@@ -11,7 +12,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.net.URLEncoder;
 
 @WebServlet("/user")
 public class UserServlet extends BaseServlet {
@@ -81,15 +81,19 @@ public class UserServlet extends BaseServlet {
 
     public String login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = CommonUtils.toBean(request.getParameterMap(), User.class);
-        boolean isExist = userService.isExist(user);
+        boolean isExist = false;
+        if (user.getEmail().equals(Admin.account) && user.getPassword().equals(Admin.password)) {
+            isExist = true;
+        }
+        isExist |= userService.isExist(user);
         if (isExist) {
-            Cookie cookie = new Cookie("user", user.getName());
+            Cookie cookie = new Cookie("user", user.getEmail());
             cookie.setMaxAge(-1);
             cookie.setPath("/");
             response.addCookie(cookie);
             request.setAttribute("msg", "登录成功！");
             request.setAttribute("isLogin", 1);
-            request.setAttribute("loginUser", user.getName());
+            request.setAttribute("loginUser", user.getEmail());
         } else {
             request.setAttribute("msg", "登录失败！");
         }

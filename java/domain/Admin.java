@@ -1,6 +1,6 @@
 package domain;
 
 public class Admin {
-    private final static String account = "admin";
-    private final static String password = "admin";
+    public final static String account = "admin@admin.com";
+    public final static String password = "admin";
 }
