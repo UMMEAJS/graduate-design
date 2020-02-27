@@ -38,21 +38,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/TextbookReview/jsp/user/index.jsp">用户信息系统</a>
+                <a class="navbar-brand" href="/TextbookReview/index.jsp">图书评论中心</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav">
                     <li class="">
-                        <a href="/TextbookReview/jsp/user/index.jsp">主页</a>
+                        <a href="/TextbookReview/index.jsp">主页</a>
                     </li>
                     <li class="">
-                        <a href="/TextbookReview/jsp/user/add.jsp">添加信息</a>
+                        <a href="/TextbookReview/textbook/query.jsp">搜索图书</a>
                     </li>
                     <li class="">
-                        <a href="/TextbookReview/jsp/user/query.jsp">搜索信息</a>
-                    </li>
-                    <li class="">
-                        <a href="/TextbookReview/user?method=query&currPage=1">查看信息</a>
+                        <a href="/TextbookReview/textbook?method=query&currPage=1">查看图书</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -71,7 +68,7 @@
 
                         <c:otherwise>
                             <li>
-                                <a href="/TextbookReview/jsp/user/login.jsp">
+                                <a href="/TextbookReview/user/login.jsp">
                                     <span class="glyphicon glyphicon-log-in"></span> Log in
                                 </a>
                             </li>

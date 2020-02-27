@@ -21,21 +21,21 @@ public class ReviewServlet extends BaseServlet {
         review.setDate(CommonUtils.getDate());
         reviewService.add(review);
         request.setAttribute("msg", "添加评论成功！");
-        return "/jsp/review/msg.jsp";
+        return "/msg.jsp";
     }
 
     public String delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String rid = request.getParameter("rid");
         reviewService.delete(rid);
         request.setAttribute("msg", "删除评论成功！");
-        return "/jsp/review/msg.jsp";
+        return "/msg.jsp";
     }
 
     public String preEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String rid = request.getParameter("rid");
         Review review = reviewService.find(rid);
         request.setAttribute("review", review);
-        return "/jsp/review/edit.jsp";
+        return "/review/edit.jsp";
     }
 
     public String edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,7 +43,7 @@ public class ReviewServlet extends BaseServlet {
         review.setDate(CommonUtils.getDate());
         reviewService.edit(review);
         request.setAttribute("msg", "评论信息修改成功！");
-        return "/jsp/review/msg.jsp";
+        return "/msg.jsp";
     }
 
     public int getCurrPage(HttpServletRequest request) throws ServletException, IOException {
@@ -76,6 +76,10 @@ public class ReviewServlet extends BaseServlet {
         page.setUrl(getUrl(request));
         request.setAttribute("page", page);
 
-        return "/jsp/review/list.jsp";
+        if (request.getHeader("Referer").contains("admin") || "1".equals(request.getAttribute("admin"))) {
+            return "/admin/review/list.jsp";
+        } else {
+            return "/review/list.jsp";
+        }
     }
 }

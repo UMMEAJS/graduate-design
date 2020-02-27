@@ -17,18 +17,18 @@
     <script type="text/javascript" src="<%= request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <%@ include file="header.jsp" %>
+    <%@ include file="../header.jsp" %>
     <div>
         <h1 style="color:grey" align="center">搜索学生信息</h1>
     </div>
     <div class="container-fluid">
-        <form class="form-horizontal" role="form" action="<c:url value='/review'/>" method="get">
+        <form class="form-horizontal" role="form" action="<c:url value='/user'/>" method="get">
         <input type="hidden" name="method" value="query">
 
         <div class="form-group">
-            <label class="col-sm-2 control-label">ISBN</label>
+            <label class="col-sm-2 control-label">名字</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="isbn" placeholder="请输入ISBN">
+                <input type="text" class="form-control" name="name" placeholder="请输入名字">
             </div>
         </div>
 
@@ -40,6 +40,6 @@
         </div>
     </form>
     </div>
-    <%@ include file="footer.jsp" %>
+    <%@ include file="../footer.jsp" %>
 </body>
 </html>

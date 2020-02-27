@@ -42,4 +42,25 @@ public class BaseServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
+
+    public int getCurrPage(HttpServletRequest request) throws ServletException, IOException {
+        String currPage = request.getParameter("currPage");
+        if (currPage == null || currPage.trim().isEmpty()) {
+            return 1;
+        }
+        return Integer.parseInt(currPage);
+    }
+
+    public String getUrl(HttpServletRequest request) {
+        String contextPath =  request.getContextPath();
+        String servletPath = request.getServletPath();
+        String queryString = request.getQueryString();
+
+        if (queryString.contains("&currPage=")) {
+            int index = queryString.indexOf("&currPage=");
+            queryString = queryString.substring(0, index);
+        }
+
+        return contextPath + servletPath + "?" + queryString;
+    }
 }

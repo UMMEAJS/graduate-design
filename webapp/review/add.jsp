@@ -11,20 +11,26 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>添加图书信息</title>
+    <title>添加评论信息</title>
     <link rel="stylesheet" href="<%= request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
     <script type="text/javascript" src="<%= request.getContextPath()%>/jQuery/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="<%= request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <%@ include file="header.jsp" %>
+    <%@ include file="../header.jsp" %>
     <div>
-        <h1 style="color:grey" align="center">添加图书信息</h1>
+        <h1 style="color:grey" align="center">添加评论信息</h1>
     </div>
     <div class="container-fluid">
-        <form class="form-horizontal" role="form" action="<c:url value='/textbook'/>" method="post">
+        <form class="form-horizontal" role="form" action="<c:url value='/review'/>" method="post">
             <input type="hidden" name="method" value="add">
-            <input type="hidden" name="star" value="0">
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">UID</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="uid" placeholder="请输入UID">
+                </div>
+            </div>
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">ISBN</label>
@@ -34,16 +40,16 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label">名字</label>
+                <label class="col-sm-2 control-label">评论</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="name" placeholder="请输入名字">
+                    <input type="text" class="form-control" name="review" placeholder="请输入评论">
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label">类型</label>
+                <label class="col-sm-2 control-label">评分</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="genre" placeholder="请输入类型">
+                    <input type="number" class="form-control" name="star" placeholder="请输入评分">
                 </div>
             </div>
 
@@ -55,6 +61,6 @@
             </div>
         </form>
     </div>
-    <%@ include file="footer.jsp" %>
+    <%@ include file="../footer.jsp" %>
 </body>
 </html>

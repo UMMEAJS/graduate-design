@@ -19,49 +19,28 @@ public class TextbookServlet extends BaseServlet {
         Textbook textbook = CommonUtils.toBean(request.getParameterMap(), Textbook.class);
         textbookService.add(textbook);
         request.setAttribute("msg", "添加书籍成功！");
-        return "/jsp/textbook/msg.jsp";
+        return "/msg.jsp";
     }
 
     public String delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String isbn = request.getParameter("isbn");
         textbookService.delete(isbn);
         request.setAttribute("msg", "删除书籍成功！");
-        return "/jsp/textbook/msg.jsp";
+        return "/msg.jsp";
     }
 
     public String preEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String isbn = request.getParameter("isbn");
         Textbook textbook = textbookService.find(isbn);
         request.setAttribute("textbook", textbook);
-        return "/jsp/textbook/edit.jsp";
+        return "/textbook/edit.jsp";
     }
 
     public String edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Textbook textbook = CommonUtils.toBean(request.getParameterMap(), Textbook.class);
         textbookService.edit(textbook);
         request.setAttribute("msg", "书籍信息修改成功！");
-        return "/jsp/textbook/msg.jsp";
-    }
-
-    public int getCurrPage(HttpServletRequest request) throws ServletException, IOException {
-        String currPage = request.getParameter("currPage");
-        if (currPage == null || currPage.trim().isEmpty()) {
-            return 1;
-        }
-        return Integer.parseInt(currPage);
-    }
-
-    public String getUrl(HttpServletRequest request) {
-        String contextPath =  request.getContextPath();
-        String servletPath = request.getServletPath();
-        String queryString = request.getQueryString();
-
-        if (queryString.contains("&currPage=")) {
-            int index = queryString.indexOf("&currPage=");
-            queryString = queryString.substring(0, index);
-        }
-
-        return contextPath + servletPath + "?" + queryString;
+        return "/msg.jsp";
     }
 
     public String query(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -73,6 +52,10 @@ public class TextbookServlet extends BaseServlet {
         page.setUrl(getUrl(request));
         request.setAttribute("page", page);
 
-        return "/jsp/textbook/list.jsp";
+        if (request.getHeader("Referer").contains("admin") || "1".equals(request.getAttribute("admin"))) {
+            return "/admin/textbook/list.jsp";
+        } else {
+            return "/textbook/list.jsp";
+        }
     }
 }

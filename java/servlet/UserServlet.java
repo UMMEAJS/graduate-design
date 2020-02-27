@@ -22,49 +22,28 @@ public class UserServlet extends BaseServlet {
         user.setId(CommonUtils.getUUID());
         userService.add(user);
         request.setAttribute("msg", "添加用户成功！");
-        return "/jsp/user/msg.jsp";
+        return "/msg.jsp";
     }
 
     public String delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         userService.delete(id);
         request.setAttribute("msg", "删除用户成功！");
-        return "/jsp/user/msg.jsp";
+        return "/msg.jsp";
     }
 
     public String preEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         User user = userService.find(id);
         request.setAttribute("user", user);
-        return "/jsp/user/edit.jsp";
+        return "/user/edit.jsp";
     }
 
     public String edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = CommonUtils.toBean(request.getParameterMap(), User.class);
         userService.edit(user);
         request.setAttribute("msg", "用户信息修改成功！");
-        return "/jsp/user/msg.jsp";
-    }
-
-    public int getCurrPage(HttpServletRequest request) throws ServletException, IOException {
-        String currPage = request.getParameter("currPage");
-        if (currPage == null || currPage.trim().isEmpty()) {
-            return 1;
-        }
-        return Integer.parseInt(currPage);
-    }
-
-    public String getUrl(HttpServletRequest request) {
-        String contextPath =  request.getContextPath();
-        String servletPath = request.getServletPath();
-        String queryString = request.getQueryString();
-
-        if (queryString.contains("&currPage=")) {
-            int index = queryString.indexOf("&currPage=");
-            queryString = queryString.substring(0, index);
-        }
-
-        return contextPath + servletPath + "?" + queryString;
+        return "/msg.jsp";
     }
 
     public String query(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -76,7 +55,11 @@ public class UserServlet extends BaseServlet {
         page.setUrl(getUrl(request));
         request.setAttribute("page", page);
 
-        return "/jsp/user/list.jsp";
+        if (request.getHeader("Referer").contains("admin") || "1".equals(request.getAttribute("admin"))) {
+            return "/admin/user/list.jsp";
+        } else {
+            return "/user/list.jsp";
+        }
     }
 
     public String login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -98,7 +81,7 @@ public class UserServlet extends BaseServlet {
             request.setAttribute("msg", "登录失败！");
         }
 
-        return "/jsp/user/msg.jsp";
+        return "/msg.jsp";
     }
 
     public String logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -113,6 +96,6 @@ public class UserServlet extends BaseServlet {
         request.setAttribute("msg", "注销成功！");
         request.setAttribute("isLogin", 0);
 
-        return "/jsp/user/msg.jsp";
+        return "/msg.jsp";
     }
 }

@@ -59,7 +59,7 @@
 
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="email" for="email" class="form-control" name="name" placeholder="邮箱">
+                <input type="email" for="email" class="form-control" name="email" placeholder="邮箱">
             </div>
 
             <div class="input-group">
