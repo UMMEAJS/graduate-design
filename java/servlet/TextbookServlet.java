@@ -19,28 +19,32 @@ public class TextbookServlet extends BaseServlet {
         Textbook textbook = CommonUtils.toBean(request.getParameterMap(), Textbook.class);
         textbookService.add(textbook);
         request.setAttribute("msg", "添加书籍成功！");
-        return "/msg.jsp";
+
+        return getReferer(request) + "/msg.jsp";
     }
 
     public String delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String isbn = request.getParameter("isbn");
         textbookService.delete(isbn);
         request.setAttribute("msg", "删除书籍成功！");
-        return "/msg.jsp";
+
+        return getReferer(request) + "/msg.jsp";
     }
 
     public String preEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String isbn = request.getParameter("isbn");
         Textbook textbook = textbookService.find(isbn);
         request.setAttribute("textbook", textbook);
-        return "/textbook/edit.jsp";
+
+        return getReferer(request) + "/textbook/edit.jsp";
     }
 
     public String edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Textbook textbook = CommonUtils.toBean(request.getParameterMap(), Textbook.class);
         textbookService.edit(textbook);
         request.setAttribute("msg", "书籍信息修改成功！");
-        return "/msg.jsp";
+
+        return getReferer(request) + "/msg.jsp";
     }
 
     public String query(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -52,16 +56,13 @@ public class TextbookServlet extends BaseServlet {
         page.setUrl(getUrl(request));
         request.setAttribute("page", page);
 
-        if (request.getHeader("Referer").contains("admin") || "1".equals(request.getAttribute("admin"))) {
-            return "/admin/textbook/list.jsp";
-        } else {
-            return "/textbook/list.jsp";
-        }
+        return getReferer(request) + "/textbook/list.jsp";
     }
 
     public String addReview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String isbn = request.getParameter("isbn");
         request.setAttribute("isbn", isbn);
-        return "/review/add.jsp";
+
+        return getReferer(request) + "/review/add.jsp";
     }
 }

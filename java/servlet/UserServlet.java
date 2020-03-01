@@ -22,28 +22,31 @@ public class UserServlet extends BaseServlet {
         user.setId(CommonUtils.getUUID());
         userService.add(user);
         request.setAttribute("msg", "添加用户成功！");
-        return "/msg.jsp";
+
+        return getReferer(request) + "/msg.jsp";
     }
 
     public String delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         userService.delete(id);
         request.setAttribute("msg", "删除用户成功！");
-        return "/msg.jsp";
+
+        return getReferer(request) + "/msg.jsp";
     }
 
     public String preEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         User user = userService.find(id);
         request.setAttribute("user", user);
-        return "/user/edit.jsp";
+        return getReferer(request) + "/user/edit.jsp";
     }
 
     public String edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = CommonUtils.toBean(request.getParameterMap(), User.class);
         userService.edit(user);
         request.setAttribute("msg", "用户信息修改成功！");
-        return "/msg.jsp";
+
+        return getReferer(request) + "/msg.jsp";
     }
 
     public String query(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -55,11 +58,7 @@ public class UserServlet extends BaseServlet {
         page.setUrl(getUrl(request));
         request.setAttribute("page", page);
 
-        if (request.getHeader("Referer").contains("admin") || "1".equals(request.getAttribute("admin"))) {
-            return "/admin/user/list.jsp";
-        } else {
-            return "/user/list.jsp";
-        }
+        return getReferer(request) + "/user/list.jsp";
     }
 
     public String login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -67,13 +66,18 @@ public class UserServlet extends BaseServlet {
         boolean isExist = false;
         if (user.getEmail().equals(Admin.account) && user.getPassword().equals(Admin.password)) {
             isExist = true;
+            Cookie cookie1 = new Cookie("isAdmin", "1");
+            cookie1.setMaxAge(-1);
+            cookie1.setPath("/");
+            response.addCookie(cookie1);
+            request.setAttribute("isAdmin", 1);
         }
         isExist |= userService.isExist(user);
         if (isExist) {
-            Cookie cookie = new Cookie("user", user.getEmail());
-            cookie.setMaxAge(-1);
-            cookie.setPath("/");
-            response.addCookie(cookie);
+            Cookie cookie2 = new Cookie("user", user.getEmail());
+            cookie2.setMaxAge(-1);
+            cookie2.setPath("/");
+            response.addCookie(cookie2);
             request.setAttribute("msg", "登录成功！");
             request.setAttribute("isLogin", 1);
             request.setAttribute("loginUser", user.getEmail());
@@ -81,7 +85,7 @@ public class UserServlet extends BaseServlet {
             request.setAttribute("msg", "登录失败！");
         }
 
-        return "/msg.jsp";
+        return getReferer(request) + "/msg.jsp";
     }
 
     public String logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -91,11 +95,19 @@ public class UserServlet extends BaseServlet {
                 cookie.setMaxAge(0);
                 cookie.setPath("/");
                 response.addCookie(cookie);
+                request.setAttribute("isLogin", 0);
+            }
+
+            if (cookie.getName().equals("isAdmin")) {
+                cookie.setMaxAge(0);
+                cookie.setPath("/");
+                response.addCookie(cookie);
+                request.setAttribute("isLogin", 0);
+                request.setAttribute("isAdmin", 0);
             }
         }
         request.setAttribute("msg", "注销成功！");
-        request.setAttribute("isLogin", 0);
 
-        return "/msg.jsp";
+        return getReferer(request) + "/msg.jsp";
     }
 }

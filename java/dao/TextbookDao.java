@@ -67,6 +67,12 @@ public class TextbookDao {
                 params.add("%" + name + "%");
             }
 
+            String genre = textbook.getGenre();
+            if (genre != null && !genre.trim().isEmpty()) {
+                whereSql.append(" and genre=? ");
+                params.add(genre);
+            }
+
             Number number = runner.query(cntSql.append(whereSql).toString(), new ScalarHandler<>(), params.toArray());
             int totalRecord = number.intValue();
             page.setTotalPage((int)Math.ceil((double)totalRecord / pageRecord));

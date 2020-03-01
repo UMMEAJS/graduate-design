@@ -48,7 +48,7 @@
             </tbody>
         </table>
     </div>
-    <%@ include file="../../page.jsp" %>
+    <%@ include file="../page.jsp" %>
     <%@ include file="../footer.jsp" %>
 </body>
 </html>

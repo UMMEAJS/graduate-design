@@ -63,4 +63,12 @@ public class BaseServlet extends HttpServlet {
 
         return contextPath + servletPath + "?" + queryString;
     }
+
+    public String getReferer(HttpServletRequest request) {
+        if (request.getHeader("Referer").contains("admin")) {
+            return "/admin";
+        } else {
+            return "";
+        }
+    }
 }

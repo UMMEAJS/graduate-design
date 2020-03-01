@@ -17,6 +17,11 @@
                 request.setAttribute("loginUser", cookie.getValue());
                 break;
             }
+
+            if (cookie.getName().equals("isAdmin")) {
+                request.setAttribute("isAdmin", 1);
+                break;
+            }
         }
     }
 %>
@@ -55,10 +60,10 @@
                         <ul class="dropdown-menu">
                             <li><a href="/TextbookReview/textbook?method=query&currPage=1">全部图书</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">数学类</a></li>
-                            <li><a href="#">英语类</a></li>
-                            <li><a href="#">语文类</a></li>
-                            <li><a href="#">计算机类</a></li>
+                            <li><a href="/TextbookReview/textbook?method=query&currPage=1&genre=数学">数学类</a></li>
+                            <li><a href="/TextbookReview/textbook?method=query&currPage=1&genre=英语">英语类</a></li>
+                            <li><a href="/TextbookReview/textbook?method=query&currPage=1&genre=语文">语文类</a></li>
+                            <li><a href="/TextbookReview/textbook?method=query&currPage=1&genre=计算机">计算机类</a></li>
                         </ul>
                     </li>
                 </ul>
