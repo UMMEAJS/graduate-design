@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>添加评论信息</title>
+    <title>评论信息中心</title>
     <link rel="stylesheet" href="<%= request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
     <script type="text/javascript" src="<%= request.getContextPath()%>/jQuery/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="<%= request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
@@ -24,18 +24,12 @@
     <div class="container-fluid">
         <form class="form-horizontal" role="form" action="<c:url value='/review'/>" method="post">
             <input type="hidden" name="method" value="add">
+            <input type="hidden" name="isbn" value="${requestScope.isbn}">
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">UID</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="uid" placeholder="请输入UID">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-2 control-label">ISBN</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="isbn" placeholder="请输入ISBN">
                 </div>
             </div>
 

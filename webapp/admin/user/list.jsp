@@ -19,7 +19,7 @@
 <body>
     <%@ include file="../header.jsp" %>
     <div>
-        <h1 style="color:grey" align="center">查看学生信息</h1>
+        <h1 style="color:grey" align="center">查看用户信息</h1>
     </div>
     <div class="container-fluid">
         <table class="table table-striped">
@@ -39,9 +39,6 @@
                         <td style='vertical-align: middle;text-align: center'>${usr.password}</td>
                         <td style='vertical-align: middle;text-align: center'>${usr.email}</td>
                         <td style='vertical-align: middle;text-align: center'>
-                            <a href="<c:url value='/user?method=preEdit&id=${usr.id}'/>">
-                                <span class="glyphicon glyphicon-edit text-info"></span>
-                            </a>
                             <a href="<c:url value='/user?method=delete&id=${usr.id}'/>">
                                 <span class="glyphicon glyphicon-remove text-warning"></span>
                             </a>

@@ -30,7 +30,7 @@
     <script type="text/javascript" src="<%= request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <nav class="nav navbar-inverse navbar-static-top">
+    <nav class="nav navbar-inverse navbar-static-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
@@ -38,20 +38,41 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/TextbookReview/index.jsp">图书评论中心</a>
+                <a class="navbar-brand" href="/TextbookReview/index.jsp">图书评论网</a>
             </div>
+
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav">
                     <li class="">
                         <a href="/TextbookReview/index.jsp">主页</a>
                     </li>
-                    <li class="">
-                        <a href="/TextbookReview/textbook/query.jsp">搜索图书</a>
-                    </li>
-                    <li class="">
-                        <a href="/TextbookReview/textbook?method=query&currPage=1">查看图书</a>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            查看图书
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/TextbookReview/textbook?method=query&currPage=1">全部图书</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">数学类</a></li>
+                            <li><a href="#">英语类</a></li>
+                            <li><a href="#">语文类</a></li>
+                            <li><a href="#">计算机类</a></li>
+                        </ul>
                     </li>
                 </ul>
+
+                <form  class="navbar-form navbar-left" role="search" action="<c:url value='/textbook'/>" method="get">
+                    <input type="hidden" name="method" value="query">
+                    <div class="form-group-sm">
+                        <input type="text" placeholder="请输入图书名字"  class="form-control" name="name"/>
+                        <button type="submit" class="btn btn-default">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                </form>
+
                 <ul class="nav navbar-nav navbar-right">
                     <c:if test="${requestScope.isLogin eq 1}">
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${requestScope.loginUser}</a></li>

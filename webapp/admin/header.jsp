@@ -30,7 +30,7 @@
     <script type="text/javascript" src="<%= request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <nav class="nav navbar-inverse navbar-static-top">
+    <nav class="nav navbar-inverse navbar-static-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
@@ -40,18 +40,48 @@
                 </button>
                 <a class="navbar-brand" href="/TextbookReview/admin/index.jsp">管理员界面</a>
             </div>
+
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav">
                     <li class="">
                         <a href="/TextbookReview/admin/index.jsp">主页</a>
                     </li>
-                    <li class="">
-                        <a href="/TextbookReview/user?method=query&currPage=1&admin=1">查看用户</a>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            用户中心
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/TextbookReview/user?method=query&currPage=1&admin=1">查看用户</a></li>
+                            <li><a href="/TextbookReview/admin/user/query.jsp">搜索用户</a></li>
+                        </ul>
                     </li>
-                    <li class="">
-                        <a href="/TextbookReview/textbook?method=query&currPage=1&admin=1">查看图书</a>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            图书中心
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/TextbookReview/textbook?method=query&currPage=1&admin=1">查看图书</a></li>
+                            <li><a href="/TextbookReview/admin/textbook/query.jsp">搜索图书</a></li>
+                            <li><a href="/TextbookReview/admin/textbook/add.jsp">添加图书</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            评论中心
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/TextbookReview/review?method=query&currPage=1&admin=1">查看评论</a></li>
+                            <li><a href="/TextbookReview/admin/review/query.jsp">搜索评论</a></li>
+                        </ul>
                     </li>
                 </ul>
+
                 <ul class="nav navbar-nav navbar-right">
                     <c:if test="${requestScope.isLogin eq 1}">
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${requestScope.loginUser}</a></li>
@@ -68,7 +98,7 @@
 
                         <c:otherwise>
                             <li>
-                                <a href="/TextbookReview/jsp/user/login.jsp">
+                                <a href="/TextbookReview/user/login.jsp">
                                     <span class="glyphicon glyphicon-log-in"></span> Log in
                                 </a>
                             </li>

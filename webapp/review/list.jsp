@@ -42,14 +42,6 @@
                         <td style='vertical-align: middle;text-align: center'>${review.date}</td>
                         <td style='vertical-align: middle;text-align: center'>${review.review}</td>
                         <td style='vertical-align: middle;text-align: center'>${review.star}</td>
-                        <td style='vertical-align: middle;text-align: center'>
-                            <a href="<c:url value='/review?method=preEdit&rid=${review.rid}'/>">
-                                <span class="glyphicon glyphicon-edit text-info"></span>
-                            </a>
-                            <a href="<c:url value='/review?method=delete&rid=${review.rid}'/>">
-                                <span class="glyphicon glyphicon-remove text-warning"></span>
-                            </a>
-                        </td>
                     </tr>
                 </c:forEach>
             </tbody>

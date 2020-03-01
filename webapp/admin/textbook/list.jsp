@@ -39,9 +39,6 @@
                         <td style='vertical-align: middle;text-align: center'>${textbook.genre}</td>
                         <td style='vertical-align: middle;text-align: center'>${textbook.star}</td>
                         <td style='vertical-align: middle;text-align: center'>
-                            <a href="<c:url value='/textbook?method=preEdit&isbn=${textbook.isbn}'/>">
-                                <span class="glyphicon glyphicon-edit text-info"></span>
-                            </a>
                             <a href="<c:url value='/textbook?method=delete&isbn=${textbook.isbn}'/>">
                                 <span class="glyphicon glyphicon-remove text-warning"></span>
                             </a>

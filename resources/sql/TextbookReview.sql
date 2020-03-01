@@ -36,7 +36,7 @@ create table review(
     foreign key(isbn) references textbook(isbn)
 );
 
-insert into genre(genre) values('计算机科学');
+insert into genre(genre) values('计算机');
 insert into genre(genre) values('数学');
 insert into genre(genre) values('英语');
 insert into genre(genre) values('语文');

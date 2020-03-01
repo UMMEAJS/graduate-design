@@ -39,11 +39,11 @@
                         <td style='vertical-align: middle;text-align: center'>${textbook.genre}</td>
                         <td style='vertical-align: middle;text-align: center'>${textbook.star}</td>
                         <td style='vertical-align: middle;text-align: center'>
-                            <a href="<c:url value='/textbook?method=preEdit&isbn=${textbook.isbn}'/>">
-                                <span class="glyphicon glyphicon-edit text-info"></span>
+                            <a href="<c:url value='/textbook?method=addReview&isbn=${textbook.isbn}'/>">
+                                <span class="glyphicon glyphicon-comment text-info"></span>
                             </a>
-                            <a href="<c:url value='/textbook?method=delete&isbn=${textbook.isbn}'/>">
-                                <span class="glyphicon glyphicon-remove text-warning"></span>
+                            <a href="<c:url value='/review?method=query&isbn=${textbook.isbn}&currPage=1'/>">
+                                <span class="glyphicon glyphicon-list-alt text-info"></span>
                             </a>
                         </td>
                     </tr>

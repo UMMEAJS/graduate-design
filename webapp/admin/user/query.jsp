@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>查询用户信息</title>
+    <title>用户信息中心</title>
     <link rel="stylesheet" href="<%= request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
     <script type="text/javascript" src="<%= request.getContextPath()%>/jQuery/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="<%= request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
@@ -19,7 +19,7 @@
 <body>
     <%@ include file="../header.jsp" %>
     <div>
-        <h1 style="color:grey" align="center">搜索学生信息</h1>
+        <h1 style="color:grey" align="center">搜索用户信息</h1>
     </div>
     <div class="container-fluid">
         <form class="form-horizontal" role="form" action="<c:url value='/user'/>" method="get">

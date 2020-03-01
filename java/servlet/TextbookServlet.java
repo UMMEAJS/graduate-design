@@ -58,4 +58,10 @@ public class TextbookServlet extends BaseServlet {
             return "/textbook/list.jsp";
         }
     }
+
+    public String addReview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String isbn = request.getParameter("isbn");
+        request.setAttribute("isbn", isbn);
+        return "/review/add.jsp";
+    }
 }
