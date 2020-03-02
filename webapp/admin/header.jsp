@@ -58,7 +58,7 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="/TextbookReview/user?method=query&currPage=1">查看用户</a></li>
+                            <li><a href="/TextbookReview/user?method=query&adminPage=1&currPage=1">查看用户</a></li>
                             <li><a href="/TextbookReview/admin/user/query.jsp">搜索用户</a></li>
                         </ul>
                     </li>
@@ -69,7 +69,7 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="/TextbookReview/textbook?method=query&currPage=1">查看图书</a></li>
+                            <li><a href="/TextbookReview/textbook?method=query&adminPage=1&currPage=1">查看图书</a></li>
                             <li><a href="/TextbookReview/admin/textbook/query.jsp">搜索图书</a></li>
                             <li><a href="/TextbookReview/admin/textbook/add.jsp">添加图书</a></li>
                         </ul>
@@ -81,7 +81,7 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="/TextbookReview/review?method=query&currPage=1">查看评论</a></li>
+                            <li><a href="/TextbookReview/review?method=query&adminPage=1&currPage=1">查看评论</a></li>
                             <li><a href="/TextbookReview/admin/review/query.jsp">搜索评论</a></li>
                         </ul>
                     </li>

@@ -39,7 +39,7 @@
                         <td style='vertical-align: middle;text-align: center'>${textbook.genre}</td>
                         <td style='vertical-align: middle;text-align: center'>${textbook.star}</td>
                         <td style='vertical-align: middle;text-align: center'>
-                            <a href="<c:url value='/textbook?method=delete&isbn=${textbook.isbn}'/>">
+                            <a href="<c:url value='/textbook?method=delete&isbn=${textbook.isbn}&adminPage=1'/>">
                                 <span class="glyphicon glyphicon-remove text-warning"></span>
                             </a>
                         </td>

@@ -53,7 +53,6 @@ public class UserServlet extends BaseServlet {
         User user = CommonUtils.toBean(request.getParameterMap(), User.class);
         int currPage = getCurrPage(request);
         int pageRecord = 10;
-
         Page<User> page = userService.query(user, currPage, pageRecord);
         page.setUrl(getUrl(request));
         request.setAttribute("page", page);

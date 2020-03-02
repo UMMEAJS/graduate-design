@@ -23,22 +23,23 @@
     </div>
     <div class="container-fluid">
         <form class="form-horizontal" role="form" action="<c:url value='/review'/>" method="get">
-        <input type="hidden" name="method" value="query">
+            <input type="hidden" name="method" value="query">
+            <input type="hidden" name="adminPage" value="1">
 
-        <div class="form-group">
-            <label class="col-sm-2 control-label">ISBN</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="isbn" placeholder="请输入ISBN">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">评论</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="review" placeholder="请输入评论">
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">查询信息</button>
-                <button type="reset" class="btn btn-reset">重置</button>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">查询信息</button>
+                    <button type="reset" class="btn btn-reset">重置</button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
     </div>
     <%@ include file="../footer.jsp" %>
 </body>

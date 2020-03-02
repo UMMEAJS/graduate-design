@@ -39,7 +39,7 @@
                         <td style='vertical-align: middle;text-align: center'>${usr.password}</td>
                         <td style='vertical-align: middle;text-align: center'>${usr.email}</td>
                         <td style='vertical-align: middle;text-align: center'>
-                            <a href="<c:url value='/user?method=delete&id=${usr.id}'/>">
+                            <a href="<c:url value='/user?method=delete&id=${usr.id}&adminPage=1'/>">
                                 <span class="glyphicon glyphicon-remove text-warning"></span>
                             </a>
                         </td>

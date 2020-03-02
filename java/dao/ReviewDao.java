@@ -61,10 +61,10 @@ public class ReviewDao {
             StringBuilder whereSql = new StringBuilder(" where 1=1 ");
             List<Object> params = new ArrayList<>();
 
-            String isbn = review.getIsbn();
-            if (isbn != null && !isbn.trim().isEmpty()) {
-                whereSql.append(" and isbn=? ");
-                params.add(isbn);
+            String str = review.getReview();
+            if (str != null && !str.trim().isEmpty()) {
+                whereSql.append(" and review like ? ");
+                params.add("%" + str + "%");
             }
 
             Number number = runner.query(cntSql.append(whereSql).toString(), new ScalarHandler<>(), params.toArray());

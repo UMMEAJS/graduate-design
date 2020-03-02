@@ -65,7 +65,7 @@ public class BaseServlet extends HttpServlet {
     }
 
     public String getReferer(HttpServletRequest request) {
-        if (request.getHeader("Referer").contains("admin")) {
+        if ("1".equals(request.getParameter("adminPage"))) {
             return "/admin";
         } else {
             return "";

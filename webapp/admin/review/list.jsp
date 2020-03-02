@@ -43,7 +43,7 @@
                         <td style='vertical-align: middle;text-align: center'>${review.review}</td>
                         <td style='vertical-align: middle;text-align: center'>${review.star}</td>
                         <td style='vertical-align: middle;text-align: center'>
-                            <a href="<c:url value='/review?method=delete&rid=${review.rid}'/>">
+                            <a href="<c:url value='/review?method=delete&rid=${review.rid}&addminPage=1'/>">
                                 <span class="glyphicon glyphicon-remove text-warning"></span>
                             </a>
                         </td>
