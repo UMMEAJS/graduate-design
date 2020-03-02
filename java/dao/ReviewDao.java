@@ -67,6 +67,12 @@ public class ReviewDao {
                 params.add("%" + str + "%");
             }
 
+            String isbn = review.getIsbn();
+            if (isbn != null && !isbn.trim().isEmpty()) {
+                whereSql.append(" and isbn=? ");
+                params.add(isbn);
+            }
+
             Number number = runner.query(cntSql.append(whereSql).toString(), new ScalarHandler<>(), params.toArray());
             int totalRecord = number.intValue();
             page.setTotalPage((int)Math.ceil((double)totalRecord / pageRecord));
