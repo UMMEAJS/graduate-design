@@ -8,11 +8,10 @@ create table genre(
 );
 
 create table user(
-    id varchar(32),
+    email varchar(40) not null,
     name varchar(20) not null,
     password varchar(30) not null,
-    email varchar(40) not null,
-    primary key(id)
+    primary key(email)
 );
 
 create table textbook(
@@ -25,14 +24,14 @@ create table textbook(
 );
 
 create table review(
-    rid varchar(32),
-    uid varchar(32) not null,
+    id varchar(32),
+    email varchar(32) not null,
     isbn varchar(13) not null,
     date date not null,
     review varchar(200) not null,
     star int unsigned not null,
-    primary key(rid),
-    foreign key(uid) references user(id),
+    primary key(id),
+    foreign key(email) references user(email),
     foreign key(isbn) references textbook(isbn)
 );
 

@@ -25,21 +25,19 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th style='vertical-align: middle;text-align: center'>ID</th>
+                    <th style='vertical-align: middle;text-align: center'>邮箱</th>
                     <th style='vertical-align: middle;text-align: center'>名字</th>
                     <th style='vertical-align: middle;text-align: center'>密码</th>
-                    <th style='vertical-align: middle;text-align: center'>邮箱</th>
                 </tr>
             </thead>
             <tbody>
                 <c:forEach items="${requestScope.page.beanList}" var="usr">
                     <tr>
-                        <td style='vertical-align: middle;text-align: center'>${usr.id}</td>
+                        <td style='vertical-align: middle;text-align: center'>${usr.email}</td>
                         <td style='vertical-align: middle;text-align: center'>${usr.name}</td>
                         <td style='vertical-align: middle;text-align: center'>${usr.password}</td>
-                        <td style='vertical-align: middle;text-align: center'>${usr.email}</td>
                         <td style='vertical-align: middle;text-align: center'>
-                            <a href="<c:url value='/user?method=delete&id=${usr.id}&adminPage=1'/>">
+                            <a href="<c:url value='/user?method=delete&email=${usr.email}&adminPage=1'/>">
                                 <span class="glyphicon glyphicon-remove text-warning"></span>
                             </a>
                         </td>

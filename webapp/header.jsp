@@ -17,7 +17,8 @@
                 request.setAttribute("loginUser", cookie.getValue());
                 break;
             }
-
+        }
+        for (Cookie cookie : cookies) {
             if (cookie.getName().equals("isAdmin")) {
                 request.setAttribute("isAdmin", 1);
                 break;
@@ -79,6 +80,10 @@
                 </form>
 
                 <ul class="nav navbar-nav navbar-right">
+                    <c:if test="${requestScope.isAdmin eq 1}">
+                        <li><a href="/TextbookReview/admin"><span class="glyphicon glyphicon-wrench"></span> 管理员页面</a></li>
+                    </c:if>
+
                     <c:if test="${requestScope.isLogin eq 1}">
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${requestScope.loginUser}</a></li>
                     </c:if>

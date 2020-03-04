@@ -25,8 +25,8 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th style='vertical-align: middle;text-align: center'>RID</th>
-                    <th style='vertical-align: middle;text-align: center'>UID</th>
+                    <th style='vertical-align: middle;text-align: center'>ID</th>
+                    <th style='vertical-align: middle;text-align: center'>邮箱</th>
                     <th style='vertical-align: middle;text-align: center'>ISBN</th>
                     <th style='vertical-align: middle;text-align: center'>日期</th>
                     <th style='vertical-align: middle;text-align: center'>评论</th>
@@ -36,8 +36,8 @@
             <tbody>
                 <c:forEach items="${requestScope.page.beanList}" var="review">
                     <tr>
-                        <td style='vertical-align: middle;text-align: center'>${review.rid}</td>
-                        <td style='vertical-align: middle;text-align: center'>${review.uid}</td>
+                        <td style='vertical-align: middle;text-align: center'>${review.id}</td>
+                        <td style='vertical-align: middle;text-align: center'>${review.email}</td>
                         <td style='vertical-align: middle;text-align: center'>${review.isbn}</td>
                         <td style='vertical-align: middle;text-align: center'>${review.date}</td>
                         <td style='vertical-align: middle;text-align: center'>${review.review}</td>

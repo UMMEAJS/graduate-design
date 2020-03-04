@@ -7,6 +7,7 @@ import utils.CommonUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -60,9 +61,18 @@ public class TextbookServlet extends BaseServlet {
     }
 
     public String addReview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String isbn = request.getParameter("isbn");
-        request.setAttribute("isbn", isbn);
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("user")) {
+                String isbn = request.getParameter("isbn");
+                String email = cookie.getValue();
+                request.setAttribute("isbn", isbn);
+                request.setAttribute("email", email);
+                return getReferer(request) + "/review/add.jsp";
+            }
+        }
 
-        return getReferer(request) + "/review/add.jsp";
+        request.setAttribute("msg", "请登录后再添加评论！");
+        return getReferer(request) + "/msg.jsp";
     }
 }

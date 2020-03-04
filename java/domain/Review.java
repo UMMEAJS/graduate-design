@@ -3,19 +3,19 @@ package domain;
 import java.util.Date;
 
 public class Review {
-    private String rid;
-    private String uid;
+    private String id;
+    private String email;
     private String isbn;
     private Date date;
     private String review;
     private int star;
 
-    public String getRid() {
-        return this.rid;
+    public String getId() {
+        return this.id;
     }
 
-    public String getUid() {
-        return this.uid;
+    public String getEmail() {
+        return this.email;
     }
 
     public String getIsbn() {
@@ -34,12 +34,12 @@ public class Review {
         return this.star;
     }
 
-    public void setRid(String rid) {
-        this.rid = rid;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setIsbn(String isbn) {

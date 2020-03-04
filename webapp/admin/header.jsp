@@ -17,7 +17,8 @@
                 request.setAttribute("loginUser", cookie.getValue());
                 break;
             }
-
+        }
+        for (Cookie cookie : cookies) {
             if (cookie.getName().equals("isAdmin")) {
                 request.setAttribute("isAdmin", 1);
                 break;

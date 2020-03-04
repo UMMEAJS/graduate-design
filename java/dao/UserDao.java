@@ -16,18 +16,18 @@ public class UserDao {
 
     public void add(User user) {
         try {
-            String sql = "insert into user(id,name,password,email) values(?,?,?,?)";
-            Object[] params = {user.getId(), user.getName(), user.getPassword(), user.getEmail()};
+            String sql = "insert into user(email,name,password) values(?,?,?)";
+            Object[] params = {user.getEmail(), user.getName(), user.getPassword()};
             runner.update(sql, params);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void delete(String id) {
+    public void delete(String email) {
         try {
-            String sql = "delete from user where id=?";
-            runner.update(sql, id);
+            String sql = "delete from user where email=?";
+            runner.update(sql, email);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -35,18 +35,18 @@ public class UserDao {
 
     public void edit(User user) {
         try {
-            String sql = "update user set name=?,password=?,email=? where id=?";
-            Object[] params = {user.getName(), user.getPassword(), user.getEmail(), user.getId()};
+            String sql = "update user set name=?,password=? where email=?";
+            Object[] params = {user.getName(), user.getPassword(), user.getEmail()};
             runner.update(sql, params);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public User find(String id) {
+    public User find(String email) {
         try {
-            String sql = "select * from user where id=?";
-            return runner.query(sql, new BeanHandler<>(User.class), id);
+            String sql = "select * from user where email=?";
+            return runner.query(sql, new BeanHandler<>(User.class), email);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -72,7 +72,7 @@ public class UserDao {
             page.setTotalPage((int)Math.ceil((double)totalRecord / pageRecord));
 
             StringBuilder recordSql = new StringBuilder("select * from user");
-            String limitSql = " order by id limit ?,?";
+            String limitSql = " order by email limit ?,?";
             params.add((currPage - 1) * pageRecord);
             params.add(pageRecord);
             List<User> users = runner.query(recordSql.append(whereSql).append(limitSql).toString(), new BeanListHandler<>(User.class), params.toArray());

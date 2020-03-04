@@ -16,18 +16,18 @@ public class ReviewDao {
 
     public void add(Review review) {
         try {
-            String sql = "insert into review(rid,uid,isbn,date,review,star) values(?,?,?,?,?,?)";
-            Object[] params = {review.getRid(), review.getUid(), review.getIsbn(), review.getDate(), review.getReview(), review.getStar()};
+            String sql = "insert into review(id,email,isbn,date,review,star) values(?,?,?,?,?,?)";
+            Object[] params = {review.getId(), review.getEmail(), review.getIsbn(), review.getDate(), review.getReview(), review.getStar()};
             runner.update(sql, params);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void delete(String rid) {
+    public void delete(String id) {
         try {
-            String sql = "delete from review where rid=?";
-            runner.update(sql, rid);
+            String sql = "delete from review where id=?";
+            runner.update(sql, id);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -35,18 +35,18 @@ public class ReviewDao {
 
     public void edit(Review review) {
         try {
-            String sql = "update review set date=?,review=?,star=? where rid=?";
-            Object[] params = {review.getDate(), review.getReview(), review.getStar(), review.getRid()};
+            String sql = "update review set date=?,review=?,star=? where id=?";
+            Object[] params = {review.getDate(), review.getReview(), review.getStar(), review.getId()};
             runner.update(sql, params);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public Review find(String rid) {
+    public Review find(String id) {
         try {
-            String sql = "select * from review where rid=?";
-            return runner.query(sql, new BeanHandler<>(Review.class), rid);
+            String sql = "select * from review where id=?";
+            return runner.query(sql, new BeanHandler<>(Review.class), id);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -78,7 +78,7 @@ public class ReviewDao {
             page.setTotalPage((int)Math.ceil((double)totalRecord / pageRecord));
 
             StringBuilder recordSql = new StringBuilder("select * from review");
-            String limitSql = " order by rid limit ?,?";
+            String limitSql = " order by id limit ?,?";
             params.add((currPage - 1) * pageRecord);
             params.add(pageRecord);
             List<Review> reviews = runner.query(recordSql.append(whereSql).append(limitSql).toString(), new BeanListHandler<>(Review.class), params.toArray());

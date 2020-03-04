@@ -1,13 +1,12 @@
 package domain;
 
 public class User {
-    private String id;
     private String name;
     private String password;
     private String email;
 
-    public String getId() {
-        return this.id;
+    public String getEmail() {
+        return this.email;
     }
 
     public String getName() {
@@ -18,12 +17,8 @@ public class User {
         return this.password;
     }
 
-    public String getEmail() {
-        return this.email;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setName(String name) {
@@ -32,9 +27,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

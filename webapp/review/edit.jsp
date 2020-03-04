@@ -24,7 +24,7 @@
     <div class="container-fluid">
         <form class="form-horizontal" role="form" action="<c:url value='/review'/>" method="post">
             <input type="hidden" name="method" value="edit">
-            <input type="hidden" name="rid" value="${requestScope.review.rid}">
+            <input type="hidden" name="id" value="${requestScope.review.id}">
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">评论</label>

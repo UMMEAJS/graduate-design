@@ -19,7 +19,6 @@ public class UserServlet extends BaseServlet {
 
     public String add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = CommonUtils.toBean(request.getParameterMap(), User.class);
-        user.setId(CommonUtils.getUUID());
         userService.add(user);
         request.setAttribute("msg", "添加用户成功！");
 

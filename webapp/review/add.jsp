@@ -25,13 +25,7 @@
         <form class="form-horizontal" role="form" action="<c:url value='/review'/>" method="post">
             <input type="hidden" name="method" value="add">
             <input type="hidden" name="isbn" value="${requestScope.isbn}">
-
-            <div class="form-group">
-                <label class="col-sm-2 control-label">UID</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="uid" placeholder="请输入UID">
-                </div>
-            </div>
+            <input type="hidden" name="email" value="${requestScope.email}">
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">评论</label>

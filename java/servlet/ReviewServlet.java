@@ -17,7 +17,7 @@ public class ReviewServlet extends BaseServlet {
 
     public String add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Review review = CommonUtils.toBean(request.getParameterMap(), Review.class);
-        review.setRid(CommonUtils.getUUID());
+        review.setId(CommonUtils.getUUID());
         review.setDate(CommonUtils.getDate());
         reviewService.add(review);
         request.setAttribute("msg", "添加评论成功！");
