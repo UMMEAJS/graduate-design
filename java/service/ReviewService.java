@@ -11,16 +11,16 @@ public class ReviewService {
         reviewDao.add(review);
     }
 
-    public void delete(String rid) {
-        reviewDao.delete(rid);
+    public void delete(String id) {
+        reviewDao.delete(id);
     }
 
     public void edit(Review review) {
         reviewDao.edit(review);
     }
 
-    public Review find(String rid) {
-        return reviewDao.find(rid);
+    public Review find(String id) {
+        return reviewDao.find(id);
     }
 
     public Page<Review> query(Review review, int currPage, int pageRecord) {

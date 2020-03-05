@@ -26,16 +26,16 @@ public class UserServlet extends BaseServlet {
     }
 
     public String delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("id");
-        userService.delete(id);
+        String email = request.getParameter("email");
+        userService.delete(email);
         request.setAttribute("msg", "删除用户成功！");
 
         return getReferer(request) + "/msg.jsp";
     }
 
     public String preEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("id");
-        User user = userService.find(id);
+        String email = request.getParameter("email");
+        User user = userService.find(email);
         request.setAttribute("user", user);
         return getReferer(request) + "/user/edit.jsp";
     }

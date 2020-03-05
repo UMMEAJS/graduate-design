@@ -26,16 +26,16 @@ public class ReviewServlet extends BaseServlet {
     }
 
     public String delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String rid = request.getParameter("rid");
-        reviewService.delete(rid);
+        String id = request.getParameter("id");
+        reviewService.delete(id);
         request.setAttribute("msg", "删除评论成功！");
 
         return getReferer(request) + "/msg.jsp";
     }
 
     public String preEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String rid = request.getParameter("rid");
-        Review review = reviewService.find(rid);
+        String id = request.getParameter("id");
+        Review review = reviewService.find(id);
         request.setAttribute("review", review);
 
         return getReferer(request) + "/review/edit.jsp";

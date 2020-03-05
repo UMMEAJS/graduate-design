@@ -11,16 +11,16 @@ public class UserService {
         userDao.add(user);
     }
 
-    public void delete(String id) {
-        userDao.delete(id);
+    public void delete(String email) {
+        userDao.delete(email);
     }
 
     public void edit(User user) {
         userDao.edit(user);
     }
 
-    public User find(String id) {
-        return userDao.find(id);
+    public User find(String email) {
+        return userDao.find(email);
     }
 
     public Page<User> query(User user, int currPage, int pageRecord) {

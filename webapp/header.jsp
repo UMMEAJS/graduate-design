@@ -81,7 +81,7 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <c:if test="${requestScope.isAdmin eq 1}">
-                        <li><a href="/TextbookReview/admin"><span class="glyphicon glyphicon-wrench"></span> 管理员页面</a></li>
+                        <li><a href="/TextbookReview/admin"><span class="glyphicon glyphicon-cog"></span> 管理员页面</a></li>
                     </c:if>
 
                     <c:if test="${requestScope.isLogin eq 1}">

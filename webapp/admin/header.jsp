@@ -89,27 +89,22 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <c:if test="${requestScope.isLogin eq 1}">
+                    <c:if test="${requestScope.isAdmin eq 1}">
+                        <li><a href="/TextbookReview"><span class="glyphicon glyphicon-home"></span> 图书评论网</a></li>
+                    </c:if>
+
+                    <c:if test="${requestScope.isAdmin eq 1}">
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${requestScope.loginUser}</a></li>
                     </c:if>
 
-                    <c:choose>
-                        <c:when test="${requestScope.isLogin eq 1}">
-                            <li>
-                                <a href="/TextbookReview/user?method=logout">
-                                    <span class="glyphicon glyphicon-log-out"></span> Log out
-                                </a>
-                            </li>
-                        </c:when>
 
-                        <c:otherwise>
-                            <li>
-                                <a href="/TextbookReview/user/login.jsp">
-                                    <span class="glyphicon glyphicon-log-in"></span> Log in
-                                </a>
-                            </li>
-                        </c:otherwise>
-                    </c:choose>
+                    <c:if test="${requestScope.isAdmin eq 1}">
+                        <li>
+                            <a href="/TextbookReview/user?method=logout">
+                                <span class="glyphicon glyphicon-log-out"></span> Log out
+                            </a>
+                        </li>
+                    </c:if>
                 </ul>
             </div>
         </div>
@@ -118,7 +113,7 @@
     <script type="text/javascript">
         $(function () {
             $('.navbar-nav li').find('a').each(function () {
-                if (this.href === document.location.href || document.location.href.search(this.href) >= 0) {
+                if (this.href === document.location.href || document.location.href.search(this.href) > 0) {
                     $(this).parent().siblings('li').removeClass('active');
                     $(this).parent().addClass('active');
                 }
