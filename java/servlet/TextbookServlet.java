@@ -1,6 +1,7 @@
 package servlet;
 
 import domain.Textbook;
+import service.ReviewService;
 import service.TextbookService;
 import domain.Page;
 import utils.CommonUtils;
@@ -14,6 +15,7 @@ import java.io.IOException;
 
 @WebServlet("/textbook")
 public class TextbookServlet extends BaseServlet {
+    private ReviewService reviewService = new ReviewService();
     private TextbookService textbookService = new TextbookService();
 
     public String add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,6 +28,7 @@ public class TextbookServlet extends BaseServlet {
 
     public String delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String isbn = request.getParameter("isbn");
+        reviewService.deleteByIsbn(isbn);
         textbookService.delete(isbn);
         request.setAttribute("msg", "删除书籍成功！");
 

@@ -1,8 +1,10 @@
 package servlet;
 
-import domain.Review;
-import service.ReviewService;
 import domain.Page;
+import domain.Review;
+import domain.Textbook;
+import service.ReviewService;
+import service.TextbookService;
 import utils.CommonUtils;
 
 import javax.servlet.ServletException;
@@ -14,12 +16,17 @@ import java.io.IOException;
 @WebServlet("/review")
 public class ReviewServlet extends BaseServlet {
     private ReviewService reviewService = new ReviewService();
+    private TextbookService textbookService = new TextbookService();
 
     public String add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Review review = CommonUtils.toBean(request.getParameterMap(), Review.class);
         review.setId(CommonUtils.getUUID());
         review.setDate(CommonUtils.getDate());
         reviewService.add(review);
+        Textbook textbook = textbookService.find(review.getIsbn());
+        textbook.setCount(textbook.getCount() + 1);
+        textbook.setStar(textbook.getStar() + review.getStar());
+        textbookService.edit(textbook);
         request.setAttribute("msg", "添加评论成功！");
 
         return getReferer(request) + "/msg.jsp";
@@ -27,7 +34,12 @@ public class ReviewServlet extends BaseServlet {
 
     public String delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
-        reviewService.delete(id);
+        Review review = reviewService.find(id);
+        reviewService.deleteById(id);
+        Textbook textbook = textbookService.find(review.getIsbn());
+        textbook.setCount(textbook.getCount() - 1);
+        textbook.setStar(textbook.getStar() - review.getStar());
+        textbookService.edit(textbook);
         request.setAttribute("msg", "删除评论成功！");
 
         return getReferer(request) + "/msg.jsp";

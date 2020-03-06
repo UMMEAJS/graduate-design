@@ -30,4 +30,8 @@ public class UserService {
     public boolean isExist(User user) {
         return userDao.isExist(user);
     }
+
+    public boolean  verify(User user) {
+        return userDao.verify(user);
+    }
 }

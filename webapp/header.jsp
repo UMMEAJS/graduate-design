@@ -103,6 +103,12 @@
                                     <span class="glyphicon glyphicon-log-in"></span> Log in
                                 </a>
                             </li>
+
+                            <li>
+                                <a href="/TextbookReview/user/signup.jsp">
+                                    <span class="glyphicon glyphicon-plus-sign"></span> Sign up
+                                </a>
+                            </li>
                         </c:otherwise>
                     </c:choose>
                 </ul>

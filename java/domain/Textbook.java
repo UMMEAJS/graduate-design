@@ -4,7 +4,8 @@ public class Textbook {
     private String isbn;
     private String name;
     private String genre;
-    private int star;
+    private int count;
+    private double star;
 
     public String getIsbn() {
         return this.isbn;
@@ -18,7 +19,11 @@ public class Textbook {
         return this.genre;
     }
 
-    public int getStar() {
+    public int getCount() {
+        return this.count;
+    }
+
+    public double getStar() {
         return this.star;
     }
 
@@ -34,7 +39,11 @@ public class Textbook {
         this.genre = genre;
     }
 
-    public void setStar(int star) {
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public void setStar(double star) {
         this.star = star;
     }
 }

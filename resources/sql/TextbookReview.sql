@@ -18,7 +18,8 @@ create table textbook(
     isbn varchar(13),
     name varchar(20) not null,
     genre varchar(10) not null,
-    star int unsigned not null,
+    count int not null,
+    star double unsigned not null,
     primary key(isbn),
     foreign key(genre) references genre(genre)
 );

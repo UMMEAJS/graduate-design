@@ -37,13 +37,13 @@
                         <td style='vertical-align: middle;text-align: center'>${textbook.isbn}</td>
                         <td style='vertical-align: middle;text-align: center'>${textbook.name}</td>
                         <td style='vertical-align: middle;text-align: center'>${textbook.genre}</td>
-                        <td style='vertical-align: middle;text-align: center'>${textbook.star}</td>
+                        <td style='vertical-align: middle;text-align: center'>${textbook.star / textbook.count}</td>
                         <td style='vertical-align: middle;text-align: center'>
                             <a href="<c:url value='/textbook?method=addReview&isbn=${textbook.isbn}'/>">
-                                <span class="glyphicon glyphicon-comment text-info"></span>
+                                <span class="glyphicon glyphicon-comment text-muted"></span>
                             </a>
                             <a href="<c:url value='/review?method=query&isbn=${textbook.isbn}&currPage=1'/>">
-                                <span class="glyphicon glyphicon-list-alt text-info"></span>
+                                <span class="glyphicon glyphicon-list-alt text-muted"></span>
                             </a>
                         </td>
                     </tr>

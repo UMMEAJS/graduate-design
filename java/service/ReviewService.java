@@ -11,8 +11,12 @@ public class ReviewService {
         reviewDao.add(review);
     }
 
-    public void delete(String id) {
-        reviewDao.delete(id);
+    public void deleteById(String id) {
+        reviewDao.deleteById(id);
+    }
+
+    public void deleteByIsbn(String id) {
+        reviewDao.deleteByIsbn(id);
     }
 
     public void edit(Review review) {

@@ -70,7 +70,7 @@ public class UserServlet extends BaseServlet {
             response.addCookie(cookie1);
             request.setAttribute("isAdmin", 1);
         }
-        isExist |= userService.isExist(user);
+        isExist |= userService.verify(user);
         if (isExist) {
             Cookie cookie2 = new Cookie("user", user.getEmail());
             cookie2.setMaxAge(-1);
@@ -105,6 +105,18 @@ public class UserServlet extends BaseServlet {
             }
         }
         request.setAttribute("msg", "注销成功！");
+
+        return getReferer(request) + "/msg.jsp";
+    }
+
+    public String signup(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User user = CommonUtils.toBean(request.getParameterMap(), User.class);
+        if (user.getEmail().equals(Admin.account) || userService.isExist(user)) {
+            request.setAttribute("msg", "帐户已存在！");
+        } else {
+            userService.add(user);
+            request.setAttribute("msg", "注册成功！");
+        }
 
         return getReferer(request) + "/msg.jsp";
     }

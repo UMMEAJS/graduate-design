@@ -91,6 +91,32 @@ public class UserDao {
             List<Object> params = new ArrayList<>();
 
             String email = user.getEmail();
+
+            if (email == null) {
+                return false;
+            }
+
+            if (email != null && !email.trim().isEmpty()) {
+                whereSql.append(" and email=? ");
+                params.add(email);
+            }
+
+            Number number = runner.query(cntSql.append(whereSql).toString(), new ScalarHandler<>(), params.toArray());
+            int totalRecord = number.intValue();
+
+            return totalRecord > 0;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean verify(User user) {
+        try {
+            StringBuilder cntSql = new StringBuilder("select count(*) from user");
+            StringBuilder whereSql = new StringBuilder(" where 1=1 ");
+            List<Object> params = new ArrayList<>();
+
+            String email = user.getEmail();
             String password = user.getPassword();
 
             if (email == null || password == null) {

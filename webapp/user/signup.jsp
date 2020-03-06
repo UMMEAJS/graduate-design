@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>登录页面</title>
+    <title>注册页面</title>
     <link rel="stylesheet" href="<%= request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
     <script type="text/javascript" src="<%= request.getContextPath()%>/jQuery/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="<%= request.getContextPath()%>/bootstrap/js/bootstrap.min.js"></script>
@@ -51,26 +51,31 @@
     </style>
 </head>
 <body>
-    <div class="outer-wrap">
-        <form class="login-panel well" role="form" action="<c:url value='/user'/>" method="post">
-            <input type="hidden" name="method" value="login">
+<div class="outer-wrap">
+    <form class="login-panel well" role="form" action="<c:url value='/user'/>" method="post">
+        <input type="hidden" name="method" value="signup">
 
-            <h3 style="text-align: center">用户登录界面</h3>
+        <h3 style="text-align: center">用户注册界面</h3>
 
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="email" for="email" class="form-control" name="email" placeholder="邮箱">
-            </div>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input type="email" for="email" class="form-control" name="email" placeholder="邮箱">
+        </div>
 
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                <input type="password" for="password" class="form-control" name="password" placeholder="密码">
-            </div>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-adjust"></i></span>
+            <input type="text" for="text" class="form-control" name="name" placeholder="名字">
+        </div>
 
-            <button type="submit" class="btn btn-success btn-block">
-                登录
-            </button>
-        </form>
-    </div>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input type="password" for="password" class="form-control" name="password" placeholder="密码">
+        </div>
+
+        <button type="submit" class="btn btn-success btn-block">
+            登录
+        </button>
+    </form>
+</div>
 </body>
 </html>

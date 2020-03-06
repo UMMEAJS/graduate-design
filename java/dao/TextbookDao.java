@@ -16,8 +16,8 @@ public class TextbookDao {
 
     public void add(Textbook textbook) {
         try {
-            String sql = "insert into textbook(isbn,name,genre,star) values(?,?,?,?)";
-            Object[] params = {textbook.getIsbn(), textbook.getName(), textbook.getGenre(), textbook.getStar()};
+            String sql = "insert into textbook(isbn,name,genre,count,star) values(?,?,?,?,?)";
+            Object[] params = {textbook.getIsbn(), textbook.getName(), textbook.getGenre(), textbook.getCount(), textbook.getStar()};
             runner.update(sql, params);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -35,8 +35,8 @@ public class TextbookDao {
 
     public void edit(Textbook textbook) {
         try {
-            String sql = "update textbook set name=?,genre=?,star=? where isbn=?";
-            Object[] params = {textbook.getName(), textbook.getGenre(), textbook.getStar(), textbook.getIsbn()};
+            String sql = "update textbook set name=?,genre=?,count=?,star=? where isbn=?";
+            Object[] params = {textbook.getName(), textbook.getGenre(), textbook.getCount(), textbook.getStar(), textbook.getIsbn()};
             runner.update(sql, params);
         } catch (Exception e) {
             throw new RuntimeException(e);

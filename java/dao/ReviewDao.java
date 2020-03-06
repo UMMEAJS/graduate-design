@@ -24,10 +24,19 @@ public class ReviewDao {
         }
     }
 
-    public void delete(String id) {
+    public void deleteById(String id) {
         try {
             String sql = "delete from review where id=?";
             runner.update(sql, id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deleteByIsbn(String isbn) {
+        try {
+            String sql = "delete from review where isbn=?";
+            runner.update(sql, isbn);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

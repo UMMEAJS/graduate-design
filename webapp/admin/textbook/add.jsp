@@ -24,8 +24,9 @@
     <div class="container-fluid">
         <form class="form-horizontal" role="form" action="<c:url value='/textbook'/>" method="post">
             <input type="hidden" name="method" value="add">
-            <input type="hidden" name="adminPage" value="1">
             <input type="hidden" name="star" value="0">
+            <input type="hidden" name="count" value="0">
+            <input type="hidden" name="adminPage" value="1">
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">ISBN</label>
