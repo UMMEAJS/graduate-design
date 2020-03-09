@@ -22,6 +22,9 @@ public class ReviewServlet extends BaseServlet {
         Review review = CommonUtils.toBean(request.getParameterMap(), Review.class);
         review.setId(CommonUtils.getUUID());
         review.setDate(CommonUtils.getDate());
+        String[] strs = review.getReview().split("\n");
+        String str = String.join("<br/>", strs);
+        review.setReview(str);
         reviewService.add(review);
         Textbook textbook = textbookService.find(review.getIsbn());
         textbook.setCount(textbook.getCount() + 1);

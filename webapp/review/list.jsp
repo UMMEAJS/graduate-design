@@ -22,30 +22,29 @@
         <h1 style="color:grey" align="center">查看评论信息</h1>
     </div>
     <div class="container-fluid">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th style='vertical-align: middle;text-align: center'>ID</th>
-                    <th style='vertical-align: middle;text-align: center'>邮箱</th>
-                    <th style='vertical-align: middle;text-align: center'>ISBN</th>
-                    <th style='vertical-align: middle;text-align: center'>日期</th>
-                    <th style='vertical-align: middle;text-align: center'>评论</th>
-                    <th style='vertical-align: middle;text-align: center'>评分</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${requestScope.page.beanList}" var="review">
-                    <tr>
-                        <td style='vertical-align: middle;text-align: center'>${review.id}</td>
-                        <td style='vertical-align: middle;text-align: center'>${review.email}</td>
-                        <td style='vertical-align: middle;text-align: center'>${review.isbn}</td>
-                        <td style='vertical-align: middle;text-align: center'>${review.date}</td>
-                        <td style='vertical-align: middle;text-align: center'>${review.review}</td>
-                        <td style='vertical-align: middle;text-align: center'>${review.star}</td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+        <c:forEach items="${requestScope.page.beanList}" var="review">
+            <div class="container-fluid" style="text-align: center">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-4" style="text-align: left">
+                                用户:${review.email}
+                            </div>
+                            <div class="col-sm-4" style="text-align: center">
+                                日期:${review.date}
+                            </div>
+                            <div class="col-sm-4" style="text-align: right">
+                                评分:${review.star}
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="panel-body">
+                        <p class="card-text">${review.review}</p>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
     </div>
     <%@ include file="../page.jsp" %>
     <%@ include file="../footer.jsp" %>

@@ -30,7 +30,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">评论</label>
                 <div class="col-sm-10">
-                    <textarea type="text" class="form-control" rows=3 name="review" placeholder="请输入评论"></textarea>
+                    <textarea type="text" class="form-control" rows=5 name="review" placeholder="请输入评论"></textarea>
                 </div>
             </div>
 
