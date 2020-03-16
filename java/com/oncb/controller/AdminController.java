@@ -14,11 +14,11 @@ public class AdminController {
 
     @RequestMapping("/index")
     public  String index(HttpServletRequest request){
-        if (request.getSession().getAttribute("isAdmin") != null) {
-            return "admin/index";
-        } else {
-            request.setAttribute("msg", "你没有管理员权限!");
-            return "home/msg";
-        }
+        return "admin/index";
+    }
+
+    @RequestMapping("/msg")
+    public  String msg(){
+        return "admin/msg";
     }
 }
