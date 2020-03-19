@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+    <!--1 配置对象-->
+    <bean class="com.oncb.service.UserService" id="userService"/>
+    <bean class="com.oncb.service.TextbookService" id="textbookService"/>
+    <bean class="com.oncb.service.ReviewService" id="reviewService"/>
+    <bean class="com.oncb.aop.LogAspect" id="logAspect"/>
+
+    <!--2 配置AOP操作-->
+    <aop:config>
+        <!--配置切入点-->
+        <aop:pointcut id="addRecord" expression="execution(* com.oncb.service.*.add(..))"/>
+        <!--配置切面把增强用到方法上面-->
+        <aop:aspect ref="logAspect">
+            <!--配置增强类型-->
+            <aop:before method="logAddStatus" pointcut-ref="addRecord"/>
+        </aop:aspect>
+    </aop:config>
+
+    <aop:config>
+        <!--配置切入点-->
+        <aop:pointcut id="deleteRecord" expression="execution(* com.oncb.service.*.delete(..))"/>
+        <!--配置切面把增强用到方法上面-->
+        <aop:aspect ref="logAspect">
+            <!--配置增强类型-->
+            <aop:before method="logDeleteStatus" pointcut-ref="deleteRecord"/>
+        </aop:aspect>
+    </aop:config>
+
+    <aop:config>
+        <!--配置切入点-->
+        <aop:pointcut id="editRecord" expression="execution(* com.oncb.service.*.edit(..))"/>
+        <!--配置切面把增强用到方法上面-->
+        <aop:aspect ref="logAspect">
+            <!--配置增强类型-->
+            <aop:before method="logEditStatus" pointcut-ref="editRecord"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

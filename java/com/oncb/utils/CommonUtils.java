@@ -3,6 +3,8 @@ package com.oncb.utils;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.Converter;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +34,8 @@ class DateConverter implements Converter {
 }
 
 public class CommonUtils {
+    private static final ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+
     public static String getUUID() {
         return UUID.randomUUID().toString().replace("-", "").toUpperCase();
     }
@@ -80,5 +84,9 @@ public class CommonUtils {
         } else {
             return "home";
         }
+    }
+
+    public static ApplicationContext getApplicationContext() {
+        return applicationContext;
     }
 }

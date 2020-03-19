@@ -5,7 +5,7 @@ import com.oncb.pojo.Review;
 import com.oncb.dao.ReviewDao;
 
 public class ReviewService {
-    private ReviewDao reviewDao = new ReviewDao();
+    private static final ReviewDao reviewDao = new ReviewDao();
 
     public void add(Review review) {
         reviewDao.add(review);

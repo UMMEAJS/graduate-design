@@ -5,7 +5,7 @@ import com.oncb.pojo.User;
 import com.oncb.dao.UserDao;
 
 public class UserService {
-    private UserDao userDao = new UserDao();
+    private static final UserDao userDao = new UserDao();
 
     public void add(User user) {
         userDao.add(user);

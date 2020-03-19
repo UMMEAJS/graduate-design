@@ -5,8 +5,7 @@ import com.oncb.pojo.Textbook;
 import com.oncb.service.ReviewService;
 import com.oncb.service.TextbookService;
 import com.oncb.utils.CommonUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,9 +20,8 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/textbook")
 public class TextbookController {
-    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-    private static final ReviewService reviewService = new ReviewService();
-    private static final TextbookService textbookService = new TextbookService();
+    private static final ReviewService reviewService = (ReviewService)CommonUtils.getApplicationContext().getBean("reviewService");
+    private static final TextbookService textbookService = (TextbookService)CommonUtils.getApplicationContext().getBean("textbookService");
 
     @RequestMapping(value = "/preAdd")
     public String preAdd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

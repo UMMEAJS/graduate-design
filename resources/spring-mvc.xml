@@ -3,15 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-                        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
-                        http://www.springframework.org/schema/context
-                        http://www.springframework.org/schema/context/spring-context-3.2.xsd
-                        http://www.springframework.org/schema/mvc
-                        http://www.springframework.org/schema/mvc/spring-mvc.xsd
-                        http://www.springframework.org/schema/aop
-                        http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
     <!--启用spring的一些annotation -->
     <context:annotation-config/>
 
@@ -28,12 +23,7 @@
     <!--静态资源默认配置-->
     <mvc:default-servlet-handler/>
 
-    <!--但是项目部署到linux下发现WEB-INF的静态资源会出现无法解析的情况，但是本地tomcat访问正常，因此建议还是直接把静态资源放在webapp的statics下，映射配置如下-->
-    <!--<mvc:resources mapping="/css/**" location="/statics/css/"/>-->
-    <!--<mvc:resources mapping="/js/**" location="/statics/js/"/>-->
-    <!--<mvc:resources mapping="/image/**" location="/statics/images/"/>-->
-
-    <!-- 配置注解驱动 可以将request参数与绑定到controller参数上 -->
+    <!-- 配置注解驱动 可以将request参数绑定到controller参数上 -->
     <mvc:annotation-driven/>
 
     <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀(如果最后一个还是表示文件夹,则最后的斜杠不要漏了) 使用JSP-->

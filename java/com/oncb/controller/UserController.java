@@ -5,8 +5,7 @@ import com.oncb.pojo.Page;
 import com.oncb.pojo.User;
 import com.oncb.service.UserService;
 import com.oncb.utils.CommonUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,8 +20,7 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-    private static final UserService userService = new UserService();
+    private static final UserService userService = (UserService)CommonUtils.getApplicationContext().getBean("userService");
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ModelAndView add(HttpServletRequest request) throws ServletException, IOException {

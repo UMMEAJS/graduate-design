@@ -5,7 +5,7 @@ import com.oncb.pojo.Textbook;
 import com.oncb.dao.TextbookDao;
 
 public class TextbookService {
-    private TextbookDao textbookDao = new TextbookDao();
+    private static final TextbookDao textbookDao = new TextbookDao();
 
     public void add(Textbook textbook) {
         textbookDao.add(textbook);

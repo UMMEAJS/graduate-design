@@ -15,9 +15,10 @@ public class JdbcUtils {
         try {
             Properties prop = new Properties();
             InputStream in = JdbcUtils.class.getClassLoader().getResourceAsStream("/dbcpConfig.properties");
-            prop.load(in);
-            BasicDataSourceFactory basicDataSourceFactory = new BasicDataSourceFactory();
-            ds = basicDataSourceFactory.createDataSource(prop);
+            if (in != null) {
+                prop.load(in);
+                ds = BasicDataSourceFactory.createDataSource(prop);
+            }
         } catch (Exception e) {
             throw new ExceptionInInitializerError(e);
         }
