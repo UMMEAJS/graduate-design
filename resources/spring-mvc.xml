@@ -42,5 +42,11 @@
             <!-- 特定请求的拦截器只能有一个 -->
             <bean class="com.oncb.interceptor.AuthInterceptor" />
         </mvc:interceptor>
+        <mvc:interceptor>
+            <!-- 对/admin/*进行拦截 -->
+            <mvc:mapping path="/review/preAdd"/>
+            <!-- 特定请求的拦截器只能有一个 -->
+            <bean class="com.oncb.interceptor.IsLoginInterceptor" />
+        </mvc:interceptor>
     </mvc:interceptors>
 </beans>

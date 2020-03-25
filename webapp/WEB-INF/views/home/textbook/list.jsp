@@ -39,7 +39,7 @@
                         <td style='vertical-align: middle;text-align: center'>${textbook.genre}</td>
                         <td style='vertical-align: middle;text-align: center'>${textbook.star / textbook.count}</td>
                         <td style='vertical-align: middle;text-align: center'>
-                            <a href="<c:url value='/textbook/preAddReview?isbn=${textbook.isbn}'/>">
+                            <a href="<c:url value='/review/preAdd?isbn=${textbook.isbn}'/>">
                                 <span class="glyphicon glyphicon-comment text-muted"></span>
                             </a>
                             <a href="<c:url value='/review/query?isbn=${textbook.isbn}&currPage=1'/>">

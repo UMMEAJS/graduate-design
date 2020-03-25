@@ -44,6 +44,19 @@ public class ReviewController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/preAdd", method = RequestMethod.GET)
+    public ModelAndView preAddReview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ModelAndView modelAndView = new ModelAndView();
+
+        String isbn = request.getParameter("isbn");
+        String email = (String)request.getSession().getAttribute("loginUser");
+        modelAndView.addObject("isbn", isbn);
+        modelAndView.addObject("email", email);
+        modelAndView.setViewName(CommonUtils.getReferer(request) + "/review/add");
+
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");

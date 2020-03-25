@@ -96,25 +96,4 @@ public class TextbookController {
 
         return modelAndView;
     }
-
-    @RequestMapping(value = "/preAddReview", method = RequestMethod.GET)
-    public ModelAndView preAddReview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Cookie[] cookies = request.getCookies();
-
-        ModelAndView modelAndView = new ModelAndView();
-
-        if (request.getSession().getAttribute("isLogin") != null) {
-            String isbn = request.getParameter("isbn");
-            String email = (String)request.getSession().getAttribute("loginUser");
-            modelAndView.addObject("isbn", isbn);
-            modelAndView.addObject("email", email);
-            modelAndView.setViewName(CommonUtils.getReferer(request) + "/review/add");
-            return modelAndView;
-        }
-
-        modelAndView.setViewName(CommonUtils.getReferer(request) + "/msg");
-        modelAndView.addObject("msg", "请登录后再添加评论！");
-
-        return modelAndView;
-    }
 }
