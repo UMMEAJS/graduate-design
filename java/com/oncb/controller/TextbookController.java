@@ -72,7 +72,7 @@ public class TextbookController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(CommonUtils.getReferer(request) + "/msg");
-        modelAndView.addObject("msg", "书籍信息修改成功！");
+        modelAndView.addObject("msg", "修改书籍成功！");
 
         return modelAndView;
     }

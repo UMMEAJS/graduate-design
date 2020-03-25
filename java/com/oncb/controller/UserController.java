@@ -65,7 +65,7 @@ public class UserController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(CommonUtils.getReferer(request) + "/msg");
-        modelAndView.addObject("msg", "用户信息修改成功！");
+        modelAndView.addObject("msg", "修改用户成功！");
 
         return modelAndView;
     }
