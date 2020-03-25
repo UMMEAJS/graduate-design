@@ -34,7 +34,10 @@
                                 日期:${review.date}
                             </div>
                             <div class="col-sm-4" style="text-align: right">
-                                评分:${review.star}
+                                评分:${review.star} / 投票:${review.vote}
+                                <a href="<c:url value='/review/vote?id=${review.id}'/>">
+                                    <span class="glyphicon glyphicon glyphicon-heart text-danger"></span>
+                                </a>
                             </div>
                         </div>
 

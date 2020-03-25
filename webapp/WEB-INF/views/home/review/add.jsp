@@ -25,6 +25,7 @@
         <form class="form-horizontal" role="form" action="<c:url value='/review/add'/>" method="post">
             <input type="hidden" name="isbn" value="${requestScope.isbn}">
             <input type="hidden" name="email" value="${requestScope.email}">
+            <input type="hidden" name="vote" value="0">
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">评论</label>

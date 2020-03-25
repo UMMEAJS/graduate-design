@@ -31,6 +31,7 @@ create table review(
     date date not null,
     review varchar(200) not null,
     star int unsigned not null,
+    vote int unsigned not null,
     primary key(id),
     foreign key(email) references user(email),
     foreign key(isbn) references textbook(isbn)

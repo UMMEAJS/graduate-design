@@ -81,7 +81,7 @@ public class ReviewController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(CommonUtils.getReferer(request) + "/msg");
-        modelAndView.addObject("msg", "评论信息修改成功！");
+        modelAndView.addObject("msg", "修改评论成功！");
 
         return modelAndView;
     }
@@ -102,6 +102,20 @@ public class ReviewController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(CommonUtils.getReferer(request) + "/review/list");
         modelAndView.addObject("page", page);
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/vote", method = RequestMethod.GET)
+    public ModelAndView vote(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        Review review = reviewService.find(id);
+        review.setVote(review.getVote() + 1);
+        reviewService.edit(review);
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName(CommonUtils.getReferer(request) + "/msg");
+        modelAndView.addObject("msg", "点赞评论成功！");
 
         return modelAndView;
     }

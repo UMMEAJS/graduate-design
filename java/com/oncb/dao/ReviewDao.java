@@ -17,8 +17,8 @@ public class ReviewDao {
 
     public void add(Review review) {
         try {
-            String sql = "insert into review(id,email,isbn,date,review,star) values(?,?,?,?,?,?)";
-            Object[] params = {review.getId(), review.getEmail(), review.getIsbn(), review.getDate(), review.getReview(), review.getStar()};
+            String sql = "insert into review(id,email,isbn,date,review,star,vote) values(?,?,?,?,?,?,?)";
+            Object[] params = {review.getId(), review.getEmail(), review.getIsbn(), review.getDate(), review.getReview(), review.getStar(), review.getVote()};
             runner.update(sql, params);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -45,8 +45,8 @@ public class ReviewDao {
 
     public void edit(Review review) {
         try {
-            String sql = "update review set date=?,review=?,star=? where id=?";
-            Object[] params = {review.getDate(), review.getReview(), review.getStar(), review.getId()};
+            String sql = "update review set date=?,review=?,star=?,vote=? where id=?";
+            Object[] params = {review.getDate(), review.getReview(), review.getStar(), review.getVote(), review.getId()};
             runner.update(sql, params);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -88,7 +88,7 @@ public class ReviewDao {
             page.setTotalPage((int)Math.ceil((double)totalRecord / pageRecord));
 
             StringBuilder recordSql = new StringBuilder("select * from review");
-            String limitSql = " order by date desc limit ?,?";
+            String limitSql = " order by vote desc limit ?,?";
             params.add((currPage - 1) * pageRecord);
             params.add(pageRecord);
             List<Review> reviews = runner.query(recordSql.append(whereSql).append(limitSql).toString(), new BeanListHandler<>(Review.class), params.toArray());

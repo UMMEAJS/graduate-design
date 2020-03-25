@@ -9,6 +9,7 @@ public class Review {
     private Date date;
     private String review;
     private int star;
+    private int vote;
 
     public String getId() {
         return this.id;
@@ -34,6 +35,10 @@ public class Review {
         return this.star;
     }
 
+    public int getVote() {
+        return this.vote;
+    }
+
     public void setId(String id) {
         this.id = id;
     }
@@ -56,5 +61,9 @@ public class Review {
 
     public void setStar(int star) {
         this.star = star;
+    }
+
+    public void setVote(int vote) {
+        this.vote = vote;
     }
 }

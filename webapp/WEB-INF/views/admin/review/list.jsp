@@ -31,6 +31,7 @@
                     <th style='vertical-align: middle;text-align: center'>日期</th>
                     <th style='vertical-align: middle;text-align: center'>评论</th>
                     <th style='vertical-align: middle;text-align: center'>评分</th>
+                    <th style='vertical-align: middle;text-align: center'>投票</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,6 +43,7 @@
                         <td style='vertical-align: middle;text-align: center'>${review.date}</td>
                         <td style='vertical-align: middle;text-align: center'>${review.review}</td>
                         <td style='vertical-align: middle;text-align: center'>${review.star}</td>
+                        <td style='vertical-align: middle;text-align: center'>${review.vote}</td>
                         <td style='vertical-align: middle;text-align: center'>
                             <a href="<c:url value='/review/delete?id=${review.id}&adminPage=1'/>">
                                 <span class="glyphicon glyphicon-remove text-warning"></span>
