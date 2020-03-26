@@ -28,7 +28,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">名字</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="name" placeholder="请输入名字">
+                    <input type="text" required="required" class="form-control" name="name" placeholder="请输入名字">
                 </div>
             </div>
 

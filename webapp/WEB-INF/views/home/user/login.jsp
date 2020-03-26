@@ -59,12 +59,12 @@
 
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="email" for="email" class="form-control" name="email" placeholder="邮箱">
+                <input type="email" required="required" for="email" class="form-control" name="email" placeholder="邮箱">
             </div>
 
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                <input type="password" for="password" class="form-control" name="password" placeholder="密码">
+                <input type="password" required="required" for="password" class="form-control" name="password" placeholder="密码">
             </div>
 
             <button type="submit" class="btn btn-success btn-block">

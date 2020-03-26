@@ -28,7 +28,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">评论</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="review" placeholder="请输入评论">
+                    <input type="text" required="required" class="form-control" name="review" placeholder="请输入评论">
                 </div>
             </div>
 

@@ -30,14 +30,14 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">评论</label>
                 <div class="col-sm-10">
-                    <textarea type="text" class="form-control" rows=5 name="review" placeholder="请输入评论"></textarea>
+                    <textarea type="text" required="required" class="form-control" rows=5 name="review" placeholder="请输入评论"></textarea>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">评分</label>
                 <div class="col-sm-10">
-                    <input type="number" class="rating" name="star" min=1 max=5 step=0>
+                    <input type="number" required="required" class="rating" name="star" min=1 max=5 step=0>
                 </div>
             </div>
 
