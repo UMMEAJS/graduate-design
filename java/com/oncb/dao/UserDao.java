@@ -93,14 +93,12 @@ public class UserDao {
 
             String email = user.getEmail();
 
-            if (email == null) {
+            if (email == null || email.trim().isEmpty()) {
                 return false;
             }
 
-            if (email != null && !email.trim().isEmpty()) {
-                whereSql.append(" and email=? ");
-                params.add(email);
-            }
+            whereSql.append(" and email=? ");
+            params.add(email);
 
             Number number = runner.query(cntSql.append(whereSql).toString(), new ScalarHandler<>(), params.toArray());
             int totalRecord = number.intValue();
