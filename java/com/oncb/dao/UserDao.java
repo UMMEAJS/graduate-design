@@ -118,19 +118,15 @@ public class UserDao {
             String email = user.getEmail();
             String password = user.getPassword();
 
-            if (email == null || password == null) {
+            if (email == null || email.trim().isEmpty() || password == null || password.trim().isEmpty()) {
                 return false;
             }
 
-            if (email != null && !email.trim().isEmpty()) {
-                whereSql.append(" and email=? ");
-                params.add(email);
-            }
+            whereSql.append(" and email=? ");
+            params.add(email);
 
-            if (password != null && !password.trim().isEmpty()) {
-                whereSql.append(" and password=? ");
-                params.add(password);
-            }
+            whereSql.append(" and password=? ");
+            params.add(password);
 
             Number number = runner.query(cntSql.append(whereSql).toString(), new ScalarHandler<>(), params.toArray());
             int totalRecord = number.intValue();
